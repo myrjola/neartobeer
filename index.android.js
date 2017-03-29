@@ -1,19 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
-import { AppRegistry, Text } from 'react-native';
-
-export default class BeersUnderX extends Component {
-  render() {
-    return (
-      <Text>Hello world!</Text>
-    );
-  }
-}
+import { AppRegistry } from 'react-native';
+import BeersUnderX from './BeersUnderX';
 
 AppRegistry.registerComponent('beersunderx', () => BeersUnderX);
 

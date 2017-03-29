@@ -1,10 +1,10 @@
 import 'react-native';
 import React from 'react';
-
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
 
-import BeersUnderX from '../index.android.js';
+import BeersUnderX from '../BeersUnderX.js';
+
 
 it('renders correctly', () => {
   renderer.create(
