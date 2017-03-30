@@ -8,8 +8,8 @@ export default class BeersUnderX extends Component {
       <MapView
         style={{ flex: 1 }}
         initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
+          latitude: 59.329323,
+          longitude: 18.068580,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
