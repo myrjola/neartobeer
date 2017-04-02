@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { View, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 import configureStore from './configureStore';
 
@@ -11,7 +12,9 @@ export default class BeersUnderX extends Component {
   render() {
     return (
       <Provider store={store}>
-        <FilteredBarMap />
+        <View style={StyleSheet.absoluteFillObject}>
+          <FilteredBarMap />
+        </View>
       </Provider>
     );
   }
