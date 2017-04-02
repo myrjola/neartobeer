@@ -3,13 +3,15 @@ import { StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
 import BarMarker from './BarMarker';
+import WalkingDirections from '../containers/WalkingDirections';
 
-import { fetchBarsIfNeeded } from '../actions';
+import { fetchBarsIfNeeded, fetchWalkingDirectionsIfNeeded } from '../actions';
 
 class BarMap extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchBarsIfNeeded());
+    dispatch(fetchWalkingDirectionsIfNeeded());
   }
 
   render() {
@@ -32,6 +34,7 @@ class BarMap extends Component {
           />),
                  )
         }
+        <WalkingDirections />
       </MapView>
     );
   }
