@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import beersUnderXReducer from './reducers';
+import configureStore from './configureStore';
+
 
 import FilteredBarMap from './containers/FilteredBarMap';
 
-const store = createStore(beersUnderXReducer);
+const store = configureStore();
 
 export default class BeersUnderX extends Component {
   render() {
