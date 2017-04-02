@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-
+import { StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
 import BarMarker from './BarMarker';
@@ -14,10 +14,9 @@ class BarMap extends Component {
 
   render() {
     const bars = this.props.items;
-    console.log(this.props);
     return (
       <MapView
-        style={{ flex: 1 }}
+        style={StyleSheet.absoluteFillObject}
         initialRegion={{
           latitude: 59.329323,
           longitude: 18.068580,
