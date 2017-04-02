@@ -17,6 +17,7 @@ class BarMap extends Component {
     return (
       <MapView
         style={StyleSheet.absoluteFillObject}
+        showsUserLocation={true}
         initialRegion={{
           latitude: 59.329323,
           longitude: 18.068580,
