@@ -2,12 +2,12 @@ import { combineReducers } from 'redux';
 import maxBeerPriceCategory from './maxBeerPriceCategory';
 import bars from './bars';
 
-const beersUnderXApp = combineReducers({
+const beersUnderXReducer = combineReducers({
   maxBeerPriceCategory,
   bars,
 });
 
-export default beersUnderXApp;
+export default beersUnderXReducer;
 
 // Local Variables:
 // mode: js2-jsx
