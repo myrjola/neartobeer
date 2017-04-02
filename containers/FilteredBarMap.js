@@ -15,7 +15,7 @@ const getVisibleBars = (bars, maxBeerPriceCategory) => {
 };
 
 const mapStateToProps = state => ({
-  bars: getVisibleBars(state.bars, state.maxBeerPriceCategory),
+  bars: getVisibleBars(state.bars.items, state.maxBeerPriceCategory),
 });
 
 const FilteredBarMap = connect(

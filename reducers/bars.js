@@ -1,4 +1,4 @@
-import { UPDATE_BAR_LIST } from '../actions';
+import { REQUEST_BARS, RECEIVE_BARS, INVALIDATE_BARS } from '../actions';
 
 const BARS = [
   {
@@ -63,14 +63,32 @@ const BARS = [
   },
 ];
 
-const bars = (state = BARS, action) => {
+function bars(state = {
+  isFetching: false,
+  didInvalidate: false,
+  items: BARS,
+}, action) {
   switch (action.type) {
-    case UPDATE_BAR_LIST:
-      return action.bars;
+    case INVALIDATE_BARS:
+      return Object.assign({}, state, {
+        didInvalidate: true,
+      });
+    case REQUEST_BARS:
+      return Object.assign({}, state, {
+        isFetching: true,
+        didInvalidate: false,
+      });
+    case RECEIVE_BARS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        didInvalidate: false,
+        items: action.bars,
+        lastUpdated: action.receivedAt,
+      });
     default:
       return state;
   }
-};
+}
 
 export default bars;
 
