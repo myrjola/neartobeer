@@ -20,7 +20,7 @@ export const requestBars = {
 
 export const receiveBars = json => ({
   type: RECEIVE_BARS,
-  bars: json.data,
+  bars: json,
   receivedAt: Date.now(),
 });
 
@@ -35,7 +35,7 @@ function fetchBars() {
 }
 
 function shouldFetchBars(state) {
-  if (!state.bars) {
+  if (!state.bars.items) {
     return true;
   } else if (state.bars.isFetching) {
     return false;

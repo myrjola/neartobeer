@@ -4,9 +4,17 @@ import MapView from 'react-native-maps';
 
 import BarMarker from './BarMarker';
 
+import { fetchBarsIfNeeded } from '../actions';
+
 class BarMap extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchBarsIfNeeded());
+  }
+
   render() {
-    const bars = this.props.bars;
+    const bars = this.props.items;
+    console.log(this.props);
     return (
       <MapView
         style={{ flex: 1 }}
@@ -30,9 +38,11 @@ class BarMap extends Component {
 }
 
 BarMap.propTypes = {
-  bars: PropTypes.arrayOf(PropTypes.shape({
+  items: PropTypes.arrayOf(PropTypes.shape({
     post_id: PropTypes.number.isRequired,
   }).isRequired).isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default BarMap;

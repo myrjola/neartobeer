@@ -65,7 +65,7 @@ const BARS = [
 
 function bars(state = {
   isFetching: false,
-  didInvalidate: false,
+  didInvalidate: true,
   items: BARS,
 }, action) {
   switch (action.type) {
