@@ -1,4 +1,4 @@
-import { SET_BEER_MAX_PRICE_CATEGORY } from '../actions';
+import { SET_BEER_MAX_PRICE_CATEGORY } from '../actions/maxBeerPriceCategory';
 
 export const BEER_UNDER_30 = 'Beer under 30';
 export const BEER_UNDER_40 = 'Beer under 40';

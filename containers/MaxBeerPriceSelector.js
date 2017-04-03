@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { SegmentedControls } from 'react-native-radio-buttons';
 
-import { setMaxBeerPriceCategory } from '../actions';
+import { setMaxBeerPriceCategory } from '../actions/maxBeerPriceCategory';
 import { maxBeerPriceCategories } from '../reducers/maxBeerPriceCategory';
 
 const mapStateToProps = state => ({
