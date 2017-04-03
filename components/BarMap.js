@@ -30,7 +30,8 @@ class BarMap extends Component {
           <BarMarkerContainer
             key={bar.post_id}
             bar={bar}
-          />),
+          />
+        ),
                  )
         }
         <WalkingDirections />
