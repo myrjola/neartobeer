@@ -1,4 +1,4 @@
-import { REQUEST_BARS, RECEIVE_BARS, INVALIDATE_BARS } from '../actions';
+import { REQUEST_BARS, RECEIVE_BARS, INVALIDATE_BARS } from '../actions/bars.js';
 
 const BARS = [
   {
