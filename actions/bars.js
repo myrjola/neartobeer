@@ -2,6 +2,7 @@ import checkStatus from '../util/checkStatus';
 
 export const REQUEST_BARS = 'REQUEST_BARS';
 export const RECEIVE_BARS = 'RECEIVE_BARS';
+export const ERROR_BARS = 'ERROR_BARS';
 export const INVALIDATE_BARS = 'INVALIDATE_BARS';
 
 export const invalidateBars = {
@@ -18,6 +19,11 @@ export const receiveBars = json => ({
   receivedAt: Date.now(),
 });
 
+export const errorBars = error => ({
+  type: ERROR_BARS,
+  error,
+});
+
 function fetchBars() {
   return (dispatch) => {
     dispatch(requestBars);
@@ -25,16 +31,21 @@ function fetchBars() {
     return fetch('http://beersunderthirty.org/places/places.json')
       .then(checkStatus)
       .then(response => response.json())
-      .then(json => dispatch(receiveBars(json)));
+      .then(json => dispatch(receiveBars(json)))
+      .catch(error => dispatch(errorBars(error)));
   };
 }
 
 function shouldFetchBars(state) {
-  if (!state.bars.items) {
+  console.log(state);
+  if (!state.bars) {
+    console.log('no bars');
     return true;
   } else if (state.bars.isFetching) {
+    console.log('fetching');
     return false;
   }
+  console.log('validation');
   return state.bars.didInvalidate;
 }
 
