@@ -62,10 +62,11 @@ export const requestWalkingDirections = destination => ({
   destination,
 });
 
-export const receiveWalkingDirections = (origin, coords) => ({
+export const receiveWalkingDirections = (origin, coords, destination) => ({
   type: RECEIVE_WALKING_DIRECTIONS,
   origin,
   coords,
+  destination,
 });
 
 function decodeGoogleDirectionsPolyline(polylineString) {
@@ -100,7 +101,7 @@ function fetchWalkingDirections(destination) {
           .then(checkStatus)
           .then(response => response.json())
           .then(json => decodeGoogleDirectionsPolyline(json.routes[0].overview_polyline.points))
-          .then(coords => dispatch(receiveWalkingDirections(origin, coords)))
+          .then(coords => dispatch(receiveWalkingDirections(origin, coords, destination)))
           .catch(error => dispatch(errorWalkingDirections(error)));
       },
       error => dispatch(errorWalkingDirections(error)),
