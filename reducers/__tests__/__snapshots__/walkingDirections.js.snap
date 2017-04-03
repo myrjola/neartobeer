@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`doesn't accept old walking directions 1`] = `
+Object {
+  "coords": Array [],
+  "destination": Object {
+    "latitude": 0,
+    "longitude": 0,
+  },
+  "error": "",
+  "isFetching": false,
+  "origin": Object {
+    "latitude": 0,
+    "longitude": 0,
+  },
+}
+`;
+
+exports[`receives new walking directions 1`] = `
+Object {
+  "coords": Array [
+    Object {
+      "latitude": 53.213,
+      "longitude": 69.123,
+    },
+    Object {
+      "latitude": 54.213,
+      "longitude": 19.123,
+    },
+  ],
+  "destination": Object {
+    "latitude": 54.213,
+    "longitude": 19.123,
+  },
+  "error": "",
+  "isFetching": false,
+  "origin": Object {
+    "latitude": 53.213,
+    "longitude": 69.123,
+  },
+}
+`;
+
+exports[`requests new walking directions 1`] = `
+Object {
+  "coords": Array [],
+  "destination": Object {
+    "latitude": 54.213,
+    "longitude": 19.123,
+  },
+  "error": "",
+  "isFetching": true,
+  "origin": Object {
+    "latitude": 0,
+    "longitude": 0,
+  },
+}
+`;
