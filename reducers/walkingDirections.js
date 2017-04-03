@@ -1,5 +1,5 @@
 import { REQUEST_WALKING_DIRECTIONS, RECEIVE_WALKING_DIRECTIONS, ERROR_WALKING_DIRECTIONS,
-         coordinatesMatch } from '../actions';
+         coordinatesMatch } from '../actions/walkingDirections';
 
 function walkingDirections(state = {
   isFetching: false,

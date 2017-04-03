@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import BarMarker, { getBarCoordinate } from '../components/BarMarker';
-import { fetchWalkingDirectionsIfNeeded } from '../actions';
+import { fetchWalkingDirectionsIfNeeded } from '../actions/walkingDirections';
 
 const mapDispatchToProps = (dispatch, props) => ({
   onPress: () => dispatch(fetchWalkingDirectionsIfNeeded(getBarCoordinate(props.bar))),
