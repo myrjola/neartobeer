@@ -2,7 +2,7 @@ import { setMaxBeerPriceCategory } from '../../actions/maxBeerPriceCategory';
 import maxBeerPriceCategory, { BEER_UNDER_40 } from '../maxBeerPriceCategory';
 
 it('sets max beer price category', () => {
-  expect(maxBeerPriceCategory({}, setMaxBeerPriceCategory(BEER_UNDER_40))).toMatchSnapshot();
+  expect(maxBeerPriceCategory(null, setMaxBeerPriceCategory(BEER_UNDER_40))).toMatchSnapshot();
 });
 
 // Local Variables:
