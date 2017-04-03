@@ -2,16 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import { StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
-import BarMarker from './BarMarker';
+import BarMarkerContainer from '../containers/BarMarkerContainer';
 import WalkingDirections from '../containers/WalkingDirections';
 
-import { fetchBarsIfNeeded, fetchWalkingDirectionsIfNeeded } from '../actions';
+import { fetchBarsIfNeeded } from '../actions';
 
 class BarMap extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchBarsIfNeeded());
-    dispatch(fetchWalkingDirectionsIfNeeded());
   }
 
   render() {
@@ -28,7 +27,7 @@ class BarMap extends Component {
         }}
       >
         {bars.map(bar => (
-          <BarMarker
+          <BarMarkerContainer
             key={bar.post_id}
             bar={bar}
           />),

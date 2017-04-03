@@ -17,15 +17,18 @@ function chooseBeerIcon(maxBeerPriceCategory) {
   }
 }
 
-const BarMarker = ({ bar }) => (
+export const getBarCoordinate = bar => ({
+  latitude: bar.post_latitude,
+  longitude: bar.post_longitude,
+});
+
+const BarMarker = ({ bar, onPress }) => (
   <MapView.Marker
     title={bar.post_title}
     description={bar.post_content}
-    coordinate={{
-      latitude: bar.post_latitude,
-      longitude: bar.post_longitude,
-    }}
+    coordinate={getBarCoordinate(bar)}
     image={chooseBeerIcon(bar.post_category)}
+    onPress={onPress}
   />
 );
 
@@ -37,6 +40,7 @@ BarMarker.propTypes = {
     post_latitude: PropTypes.number.isRequired,
     post_longitude: PropTypes.number.isRequired,
   }).isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 export default BarMarker;

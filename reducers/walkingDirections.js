@@ -1,26 +1,36 @@
-import { REQUEST_WALKING_DIRECTIONS, RECEIVE_WALKING_DIRECTIONS, INVALIDATE_WALKING_DIRECTIONS } from '../actions';
+import { REQUEST_WALKING_DIRECTIONS, RECEIVE_WALKING_DIRECTIONS, ERROR_WALKING_DIRECTIONS } from '../actions';
 
 function walkingDirections(state = {
   isFetching: false,
-  didInvalidate: true,
+  error: '',
+  origin: {
+    longitude: 0,
+    latitiude: 0,
+  },
+  destination: {
+    longitude: 0,
+    latitude: 0,
+  },
   coords: [],
 }, action) {
   switch (action.type) {
-    case INVALIDATE_WALKING_DIRECTIONS:
-      return Object.assign({}, state, {
-        didInvalidate: true,
-      });
     case REQUEST_WALKING_DIRECTIONS:
       return Object.assign({}, state, {
         isFetching: true,
-        didInvalidate: false,
       });
     case RECEIVE_WALKING_DIRECTIONS:
       return Object.assign({}, state, {
         isFetching: false,
-        didInvalidate: false,
+        origin: action.origin,
         coords: action.coords,
         lastUpdated: action.receivedAt,
+      });
+    case ERROR_WALKING_DIRECTIONS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        coords: [],
+        lastUpdated: action.receivedAt,
+        error: action.error,
       });
     default:
       return state;
