@@ -39,7 +39,7 @@ function coordinatesToString(coord) {
 function fetchWalkingDirections(destination) {
   return (dispatch) => {
     dispatch(requestWalkingDirections(destination));
-    navigator.geolocation.getCurrentPosition(
+    return navigator.geolocation.getCurrentPosition(
       (position) => {
         const origin = position.coords;
         // FIXME: Figure out how not to repeat ourselves. This key is also in AndroidManifests.xml.

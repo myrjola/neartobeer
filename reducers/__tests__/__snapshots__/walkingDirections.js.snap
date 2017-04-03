@@ -41,6 +41,43 @@ Object {
 }
 `;
 
+exports[`requests and receives new walking directions 1`] = `
+Array [
+  Object {
+    "destination": Object {
+      "latitude": 54.213,
+      "longitude": 19.123,
+    },
+    "type": "REQUEST_WALKING_DIRECTIONS",
+  },
+  Object {
+    "coords": Array [
+      Object {
+        "latitude": 38.5,
+        "longitude": -120.2,
+      },
+      Object {
+        "latitude": 40.7,
+        "longitude": -120.95,
+      },
+      Object {
+        "latitude": 43.252,
+        "longitude": -126.453,
+      },
+    ],
+    "destination": Object {
+      "latitude": 54.213,
+      "longitude": 19.123,
+    },
+    "origin": Object {
+      "latitude": 53.213,
+      "longitude": 69.123,
+    },
+    "type": "RECEIVE_WALKING_DIRECTIONS",
+  },
+]
+`;
+
 exports[`requests new walking directions 1`] = `
 Object {
   "coords": Array [],

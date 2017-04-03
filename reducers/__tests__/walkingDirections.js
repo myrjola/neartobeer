@@ -1,4 +1,7 @@
-import { requestWalkingDirections, receiveWalkingDirections } from '../../actions/walkingDirections';
+import mockStore from 'redux-mock-store';
+
+import { requestWalkingDirections, receiveWalkingDirections,
+         fetchWalkingDirectionsIfNeeded } from '../../actions/walkingDirections';
 import walkingDirections, { initialState } from '../walkingDirections';
 
 const origin = {
@@ -24,6 +27,16 @@ it('requests new walking directions', () => {
 it('receives new walking directions', () => {
   const state = walkingDirections(initialState, requestWalkingDirections(destination));
   expect(walkingDirections(state, receiveWalkingDirections(origin, coords, destination))).toMatchSnapshot();
+});
+
+const store = mockStore({ walkingDirections: initialState });
+
+it('requests and receives new walking directions', async () => {
+  const response = '{"routes": [{"overview_polyline": {"points": "_p~iF~ps|U_ulLnnqC_mqNvxq`@"}}]}';
+  fetch.mockResponseSuccess(response);
+  navigator.mockSuccess({ coords: origin });
+  await store.dispatch(fetchWalkingDirectionsIfNeeded(destination));
+  expect(store.getActions()).toMatchSnapshot();
 });
 
 // Local Variables:
