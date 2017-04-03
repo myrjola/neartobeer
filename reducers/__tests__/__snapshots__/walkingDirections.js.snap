@@ -16,6 +16,38 @@ Object {
 }
 `;
 
+exports[`errors when HTTP request fails 1`] = `
+Array [
+  Object {
+    "destination": Object {
+      "latitude": 54.213,
+      "longitude": 19.123,
+    },
+    "type": "REQUEST_WALKING_DIRECTIONS",
+  },
+  Object {
+    "error": "Service unavailable!",
+    "type": "ERROR_WALKING_DIRECTIONS",
+  },
+]
+`;
+
+exports[`errors when geolocation fails 1`] = `
+Array [
+  Object {
+    "destination": Object {
+      "latitude": 54.213,
+      "longitude": 19.123,
+    },
+    "type": "REQUEST_WALKING_DIRECTIONS",
+  },
+  Object {
+    "error": "Can't get location",
+    "type": "ERROR_WALKING_DIRECTIONS",
+  },
+]
+`;
+
 exports[`receives new walking directions 1`] = `
 Object {
   "coords": Array [
