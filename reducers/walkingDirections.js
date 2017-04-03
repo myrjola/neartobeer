@@ -1,7 +1,7 @@
 import { REQUEST_WALKING_DIRECTIONS, RECEIVE_WALKING_DIRECTIONS, ERROR_WALKING_DIRECTIONS,
          coordinatesMatch } from '../actions/walkingDirections';
 
-function walkingDirections(state = {
+export const initialState = {
   isFetching: false,
   error: '',
   origin: {
@@ -13,7 +13,9 @@ function walkingDirections(state = {
     latitude: 0,
   },
   coords: [],
-}, action) {
+};
+
+function walkingDirections(state = initialState, action) {
   switch (action.type) {
     case REQUEST_WALKING_DIRECTIONS:
       return Object.assign({}, state, {
