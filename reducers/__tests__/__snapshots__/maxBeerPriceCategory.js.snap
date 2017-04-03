@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sets max beer price category 1`] = `"Beer under 40"`;
