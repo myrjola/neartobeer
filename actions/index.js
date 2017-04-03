@@ -79,7 +79,7 @@ export const errorWalkingDirections = error => ({
   error,
 });
 
-function coordinatesMatch(coord1, coord2) {
+export function coordinatesMatch(coord1, coord2) {
   return coord1.latitude === coord2.latitude && coord1.longitude === coord2.longitude;
 }
 

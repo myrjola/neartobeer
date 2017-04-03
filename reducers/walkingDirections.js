@@ -1,4 +1,5 @@
-import { REQUEST_WALKING_DIRECTIONS, RECEIVE_WALKING_DIRECTIONS, ERROR_WALKING_DIRECTIONS } from '../actions';
+import { REQUEST_WALKING_DIRECTIONS, RECEIVE_WALKING_DIRECTIONS, ERROR_WALKING_DIRECTIONS,
+         coordinatesMatch } from '../actions';
 
 function walkingDirections(state = {
   isFetching: false,
@@ -17,14 +18,20 @@ function walkingDirections(state = {
     case REQUEST_WALKING_DIRECTIONS:
       return Object.assign({}, state, {
         isFetching: true,
+        destination: action.destination,
       });
-    case RECEIVE_WALKING_DIRECTIONS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        origin: action.origin,
-        coords: action.coords,
-        lastUpdated: action.receivedAt,
-      });
+    case RECEIVE_WALKING_DIRECTIONS: {
+      const responseCorrespondsToLatestRequest = coordinatesMatch(state.destination, action.destination);
+      if (responseCorrespondsToLatestRequest) {
+        return Object.assign({}, state, {
+          isFetching: false,
+          origin: action.origin,
+          coords: action.coords,
+          lastUpdated: action.receivedAt,
+        });
+      }
+      return state;
+    }
     case ERROR_WALKING_DIRECTIONS:
       return Object.assign({}, state, {
         isFetching: false,
