@@ -9,6 +9,7 @@
     "test:unit": "jest"
   },
   "dependencies": {
+    "google-polyline": "^1.0.0",
     "react": "~15.4.1",
     "react-native": "0.42.3",
     "react-native-maps": "^0.13.1",
