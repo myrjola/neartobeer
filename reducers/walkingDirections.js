@@ -6,7 +6,7 @@ export const initialState = {
   error: '',
   origin: {
     longitude: 0,
-    latitiude: 0,
+    latitude: 0,
   },
   destination: {
     longitude: 0,
@@ -29,7 +29,6 @@ function walkingDirections(state = initialState, action) {
           isFetching: false,
           origin: action.origin,
           coords: action.coords,
-          lastUpdated: action.receivedAt,
         });
       }
       return state;
