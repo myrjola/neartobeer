@@ -1,18 +1,20 @@
 import React, { PropTypes } from 'react';
 import MapView from 'react-native-maps';
 
-const greenmug = require('../images/GreenMug.png');
-const yellowmug = require('../images/YellowMug.png');
-const redmug = require('../images/RedMug.png');
+import { BEER_UNDER_30, BEER_UNDER_40, BEER_UNDER_50 } from '../reducers/maxBeerPriceCategory';
+
+import greenmug from '../images/GreenMug.png';
+import yellowmug from '../images/YellowMug.png';
+import redmug from '../images/RedMug.png';
 
 function chooseBeerIcon(maxBeerPriceCategory) {
   switch (maxBeerPriceCategory) {
-    case 'Beer under 30':
+    case BEER_UNDER_30:
       return greenmug;
-    case 'Beer under 40':
+    case BEER_UNDER_40:
       return yellowmug;
     default:
-    case 'Beer under 50':
+    case BEER_UNDER_50:
       return redmug;
   }
 }
