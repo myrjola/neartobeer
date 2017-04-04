@@ -3,13 +3,8 @@ import React from 'react';
 import 'react-native';
 
 import renderer from 'react-test-renderer';
-import { Provider } from 'react-redux';
-import mockStore from 'redux-mock-store';
-import { initialState as walkingDirectionsInitialState } from '../../reducers/walkingDirections';
 
 import BarMap from '../BarMap';
-
-jest.mock('../../containers/WalkingDirections', () => 'WalkingDirections');
 
 const exampleBars = [
   {
@@ -51,17 +46,21 @@ const exampleBars = [
   },
 ];
 
-var store = null;
-
-beforeEach(() => {
-  store = mockStore({ walkingDirections: walkingDirectionsInitialState });
-});
+jest.mock('../../containers/WalkingDirections', () => 'WalkingDirections');
+jest.mock('../../containers/BarMarkerContainer', () => 'BarMarkerContainer');
 
 it('renders without bars', () => {
   expect(renderer.create(
-    <Provider store={store}>
-      <BarMap dispatch={jest.fn()} />
-    </Provider>,
+    <BarMap dispatch={jest.fn()} />,
+  )).toMatchSnapshot();
+});
+
+it('renders with bars', () => {
+  expect(renderer.create(
+    <BarMap
+      dispatch={jest.fn()}
+      items={exampleBars}
+    />,
   )).toMatchSnapshot();
 });
 
