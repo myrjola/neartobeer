@@ -60,7 +60,6 @@
       "./jest/globalFetch.js",
       "./jest/globalNavigator.js",
       "./jest/mockReactNativeMaps.js"
-    ],
-    "logTransformErrors": true
+    ]
   }
 }
