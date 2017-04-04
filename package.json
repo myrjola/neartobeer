@@ -38,9 +38,9 @@
       "^[./a-zA-Z0-9$_-]+\\.(jpg|png|gif|eot|svg|ttf|woff|woff2|mp4|webm)$": "<rootDir>/jest/FileStub.js"
     },
     "setupFiles": [
-      "./config/jest/globalFetch.js",
-      "./config/jest/globalNavigator.js",
-      "./config/jest/mockReactNativeMaps.js"
+      "./jest/globalFetch.js",
+      "./jest/globalNavigator.js",
+      "./jest/mockReactNativeMaps.js"
     ]
   }
 }
