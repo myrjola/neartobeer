@@ -9,8 +9,38 @@ exports[`renders 1`] = `
     }
   }
   description="Serves chilled Norrlands Guld on tap for only 29:-.One of the most best places in town for cheap beer lovers."
-  image={1}
+  image="\\"GreenMug.png\\""
   onPress={[Function]}
   title="MacLarens"
+/>
+`;
+
+exports[`renders with red icon 1`] = `
+<Marker
+  coordinate={
+    Object {
+      "latitude": 59.3404626,
+      "longitude": 18.05888660000005,
+    }
+  }
+  description="The famous Lion Bar chain is a perfect find for bargain brew lovers! 7 Places all around Stockholm serve chilled Spendrups (40cl, tapped) for 23:- until 20h. After this the prices will increase in two steps: until midnight the price will be 36:-, thereafter 40:-. Go and get there early to get yourself a crispy brew for under 30:- !"
+  image="\\"RedMug.png\\""
+  onPress={[Function]}
+  title="Lion Bar Sveavägen 39"
+/>
+`;
+
+exports[`renders with yellow icon 1`] = `
+<Marker
+  coordinate={
+    Object {
+      "latitude": 59.3404626,
+      "longitude": 18.05888660000005,
+    }
+  }
+  description=""
+  image="\\"YellowMug.png\\""
+  onPress={[Function]}
+  title="Lion Bar Sveavägen 39"
 />
 `;

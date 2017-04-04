@@ -33,14 +33,34 @@
     "redux-mock-store": "^1.2.2"
   },
   "jest": {
-    "preset": "react-native",
-    "moduleNameMapper": {
-      "^[./a-zA-Z0-9$_-]+\\.(jpg|png|gif|eot|svg|ttf|woff|woff2|mp4|webm)$": "<rootDir>/jest/FileStub.js"
+    "haste": {
+      "defaultPlatform": "ios",
+      "platforms": ["android", "ios", "native"],
+      "providesModuleNodeModules": [
+          "react-native"
+      ]
     },
+    "moduleNameMapper": {
+      "^React$": "<rootDir>/node_modules/react"
+    },
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      ".*\\.(jpg|jpeg|png)$": "<rootDir>/jest/fileTransformer.js"
+    },
+    "modulePathIgnorePatterns": [
+      "<rootDir>/node_modules/react-native/Libraries/react-native/",
+      "<rootDir>/node_modules/react-native/packager/"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element)"
+    ],
+    "testEnvironment": "node",
     "setupFiles": [
+      "<rootDir>/node_modules/react-native/jest/setup.js",
       "./jest/globalFetch.js",
       "./jest/globalNavigator.js",
       "./jest/mockReactNativeMaps.js"
-    ]
+    ],
+    "logTransformErrors": true
   }
 }
