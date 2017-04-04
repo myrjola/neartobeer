@@ -37,15 +37,11 @@ function fetchBars() {
 }
 
 function shouldFetchBars(state) {
-  console.log(state);
   if (!state.bars) {
-    console.log('no bars');
     return true;
   } else if (state.bars.isFetching) {
-    console.log('fetching');
     return false;
   }
-  console.log('validation');
   return state.bars.didInvalidate;
 }
 

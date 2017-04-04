@@ -42,9 +42,13 @@ class BarMap extends Component {
 BarMap.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
     post_id: PropTypes.number.isRequired,
-  }).isRequired).isRequired,
+  }).isRequired),
   isFetching: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
+};
+
+BarMap.defaultProps = {
+  items: [],
 };
 
 export default BarMap;

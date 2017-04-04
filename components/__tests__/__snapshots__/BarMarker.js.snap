@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<Marker
+  coordinate={
+    Object {
+      "latitude": 59.3419634,
+      "longitude": 18.051719899999966,
+    }
+  }
+  description="Serves chilled Norrlands Guld on tap for only 29:-.One of the most best places in town for cheap beer lovers."
+  image={1}
+  onPress={[Function]}
+  title="MacLarens"
+/>
+`;

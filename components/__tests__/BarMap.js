@@ -46,12 +46,13 @@ const exampleBars = [
   },
 ];
 
+// So that we don't need to mess with Redux store.
 jest.mock('../../containers/WalkingDirections', () => 'WalkingDirections');
 jest.mock('../../containers/BarMarkerContainer', () => 'BarMarkerContainer');
 
 it('renders without bars', () => {
   expect(renderer.create(
-    <BarMap dispatch={jest.fn()} />,
+    <BarMap dispatch={jest.fn()} isFetching={false} />,
   )).toMatchSnapshot();
 });
 
@@ -59,6 +60,7 @@ it('renders with bars', () => {
   expect(renderer.create(
     <BarMap
       dispatch={jest.fn()}
+      isFetching={false}
       items={exampleBars}
     />,
   )).toMatchSnapshot();
