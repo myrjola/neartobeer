@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without bars 1`] = `
+<MapView
+  initialRegion={
+    Object {
+      "latitude": 59.329323,
+      "latitudeDelta": 0.0922,
+      "longitude": 18.06858,
+      "longitudeDelta": 0.0421,
+    }
+  }
+  showsUserLocation={true}
+  style={
+    Object {
+      "bottom": 0,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <WalkingDirections />
+</MapView>
+`;

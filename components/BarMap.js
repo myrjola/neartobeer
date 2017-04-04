@@ -9,12 +9,11 @@ import { fetchBarsIfNeeded } from '../actions/bars';
 
 class BarMap extends Component {
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchBarsIfNeeded());
+    this.props.dispatch(fetchBarsIfNeeded());
   }
 
   render() {
-    const bars = this.props.items;
+    const bars = this.props.items || [];
     return (
       <MapView
         style={StyleSheet.absoluteFillObject}

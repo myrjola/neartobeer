@@ -39,7 +39,8 @@
     },
     "setupFiles": [
       "./config/jest/globalFetch.js",
-      "./config/jest/globalNavigator.js"
+      "./config/jest/globalNavigator.js",
+      "./config/jest/mockReactNativeMaps.js"
     ]
   }
 }
