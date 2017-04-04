@@ -5,11 +5,11 @@ const mapStateToProps = state => ({
   coordinates: state.walkingDirections.coords,
 });
 
-const MaxBeerPriceSelector = connect(
+const WalkingDirections = connect(
     mapStateToProps,
 )(MapView.Polyline);
 
-export default MaxBeerPriceSelector;
+export default WalkingDirections;
 
 // Local Variables:
 // mode: js2-jsx
