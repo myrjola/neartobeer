@@ -62,10 +62,6 @@ const mostExpensiveBar = {
   post_longitude: 18.05888660000005,
 };
 
-// jest.mock('../images/GreenMug.png', () => 'green');
-// jest.mock('../images/YellowMug.png', () => 'yellow');
-// jest.mock('../images/RedMug.png', () => 'red');
-
 it('renders', () => {
   expect(renderer.create(
     <BarMarker bar={exampleBar} onPress={jest.fn()} />,
