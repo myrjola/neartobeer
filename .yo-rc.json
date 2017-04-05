@@ -1,6 +1,7 @@
 {
   "generator-rn-toolbox": {
     "eslint": true,
-    "jest": true
+    "jest": true,
+    "travis": true
   }
 }
