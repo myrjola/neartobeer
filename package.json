@@ -37,7 +37,7 @@
       "defaultPlatform": "ios",
       "platforms": ["android", "ios", "native"],
       "providesModuleNodeModules": [
-          "react-native"
+        "react-native"
       ]
     },
     "moduleNameMapper": {
