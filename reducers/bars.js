@@ -15,7 +15,7 @@ function bars(state = initialState, action) {
     case REQUEST_BARS:
       return Object.assign({}, state, {
         isFetching: true,
-        didInvalidate: false,
+        didInvalidate: true,
       });
     case RECEIVE_BARS:
       return Object.assign({}, state, {

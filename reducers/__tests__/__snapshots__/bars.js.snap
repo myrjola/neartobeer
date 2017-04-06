@@ -116,7 +116,7 @@ Array [
 
 exports[`requests new bars 1`] = `
 Object {
-  "didInvalidate": false,
+  "didInvalidate": true,
   "isFetching": true,
   "items": Array [],
 }
