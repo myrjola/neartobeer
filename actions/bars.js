@@ -27,7 +27,6 @@ export const errorBars = error => ({
 function fetchBars() {
   return (dispatch) => {
     dispatch(requestBars);
-    // TODO: How to handle errors? Remember to set state.bars.isFetching to false.
     return fetch('http://beersunderthirty.org/places/places.json')
       .then(checkStatus)
       .then(response => response.json())
