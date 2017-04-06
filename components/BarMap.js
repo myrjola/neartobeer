@@ -25,13 +25,15 @@ class BarMap extends Component {
           longitudeDelta: 0.0421,
         }}
       >
-        {bars.map(bar => (
-          <BarMarkerContainer
-            key={bar.post_id}
-            bar={bar}
-          />
-        ),
-                 )
+        {
+          bars.map(
+            bar => (
+              <BarMarkerContainer
+                key={bar.post_id}
+                bar={bar}
+              />
+            ),
+          )
         }
         <WalkingDirections />
       </MapView>
