@@ -7,8 +7,13 @@ import { BEER_UNDER_30, BEER_UNDER_40, BEER_UNDER_50 } from '../reducers/maxBeer
 const styles = StyleSheet.create({
   option: {
     paddingHorizontal: 10,
-    borderRadius: 10,
+    borderRadius: 8,
   },
+  viewContainer: {
+    backgroundColor: '#F1EDEA',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  }
 });
 
 const extractNumber = string => string.match(/\d+/)[0];
@@ -44,7 +49,7 @@ const MaxBeerPriceRadioButtons = props => (
   <RadioButtons
     {...props}
     renderOption={MaxBeerPriceOption}
-    renderContainer={RadioButtons.renderHorizontalContainer}
+    renderContainer={RadioButtons.getViewContainerRenderer(styles.viewContainer)}
   />
 );
 
