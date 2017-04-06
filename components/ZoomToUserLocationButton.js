@@ -1,8 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, StatusBar, Text, TouchableHighlight } from 'react-native';
-
-const styles = StyleSheet.create({
-});
+import { StyleSheet, Text, TouchableHighlight } from 'react-native';
 
 const DEFAULT_PADDING = { top: 40, right: 40, bottom: 40, left: 40 };
 const COORDINATE1 = {
