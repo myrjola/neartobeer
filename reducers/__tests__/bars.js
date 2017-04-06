@@ -86,6 +86,16 @@ it("doesn't request bars when cache not invalidated", async () => {
   expect(store.getActions()).toMatchSnapshot();
 });
 
+it('invalidates over one hour old cache', async () => {
+  var receiveBarsState = { bars: bars(initialState, receiveBars(exampleBars)) };
+  const ONE_HOUR = 60 * 60 * 1000; /* ms */
+  receiveBarsState.bars.lastUpdated = Date.now() - ONE_HOUR - 1;
+  store = mockStore(receiveBarsState);
+  fetch.mockResponseSuccess(JSON.stringify([]));
+  await store.dispatch(fetchBarsIfNeeded());
+  expect(store.getActions()).toMatchSnapshot();
+});
+
 // Local Variables:
 // mode: js2-jsx
 // End:

@@ -35,7 +35,7 @@ function fetchBars() {
   };
 }
 
-function shouldFetchBars(dispatch, state) {
+function shouldFetchBars(state) {
   if (!state.bars) {
     return true;
   } else if (state.bars.isFetching) {
@@ -44,9 +44,8 @@ function shouldFetchBars(dispatch, state) {
 
   // The cache invalidates after one hour.
   const ONE_HOUR = 60 * 60 * 1000; /* ms */
-
   if (Date.now() - state.bars.lastUpdated > ONE_HOUR) {
-    dispatch(invalidateBars);
+    return true;
   }
 
   return state.bars.didInvalidate;
@@ -54,7 +53,7 @@ function shouldFetchBars(dispatch, state) {
 
 export function fetchBarsIfNeeded() {
   return (dispatch, getState) => {
-    if (shouldFetchBars(dispatch, getState())) {
+    if (shouldFetchBars(getState())) {
       return dispatch(fetchBars());
     }
   };

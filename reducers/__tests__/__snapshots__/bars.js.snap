@@ -24,6 +24,19 @@ Object {
 }
 `;
 
+exports[`invalidates over one hour old cache 1`] = `
+Array [
+  Object {
+    "type": "REQUEST_BARS",
+  },
+  Object {
+    "bars": Array [],
+    "receivedAt": 1482363367071,
+    "type": "RECEIVE_BARS",
+  },
+]
+`;
+
 exports[`receives new bars 1`] = `
 Object {
   "didInvalidate": false,
