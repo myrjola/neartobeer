@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F1EDEA',
     flexDirection: 'row',
     justifyContent: 'center',
-  }
+  },
 });
 
 const extractNumber = string => string.match(/\d+/)[0];
