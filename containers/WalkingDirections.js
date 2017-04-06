@@ -3,6 +3,8 @@ import MapView from 'react-native-maps';
 
 const mapStateToProps = state => ({
   coordinates: state.walkingDirections.coords,
+  strokeColor: '#00B1FF',
+  strokeWidth: 5,
 });
 
 const WalkingDirections = connect(
