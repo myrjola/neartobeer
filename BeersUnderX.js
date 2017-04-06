@@ -10,6 +10,9 @@ import ZoomToUserLocationButton from './components/ZoomToUserLocationButton';
 const store = configureStore();
 
 const styles = StyleSheet.create({
+  appView: {
+    flex: 1,
+  },
   buttonRow: {
     padding: 10,
     backgroundColor: '#F1EDEA',
@@ -22,14 +25,14 @@ const styles = StyleSheet.create({
 
 const BeersUnderX = () => (
   <Provider store={store}>
-    <View style={StyleSheet.absoluteFillObject}>
+    <View style={styles.appView}>
       <StatusBar hidden={true} />
-      <FilteredBarMap />
       <View style={styles.buttonRow}>
         <Text>About</Text>
         <MaxBeerPriceSelector />
         <ZoomToUserLocationButton />
       </View>
+      <FilteredBarMap />
     </View>
   </Provider>
 );

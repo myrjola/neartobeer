@@ -5,10 +5,12 @@ import MapView from 'react-native-maps';
 import BarMarkerContainer from '../containers/BarMarkerContainer';
 import WalkingDirections from '../containers/WalkingDirections';
 
+const mapStyle = StyleSheet.create({ flex: 1 });
+
 const BarMap = ({ items }) => (
   <MapView
     ref={(ref) => { this.map = ref; }}
-    style={StyleSheet.absoluteFillObject}
+    style={mapStyle}
     showsUserLocation={true}
     showsMyLocationButton={false}
     initialRegion={{
