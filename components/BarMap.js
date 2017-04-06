@@ -5,13 +5,7 @@ import MapView from 'react-native-maps';
 import BarMarkerContainer from '../containers/BarMarkerContainer';
 import WalkingDirections from '../containers/WalkingDirections';
 
-import { fetchBarsIfNeeded } from '../actions/bars';
-
 class BarMap extends Component {
-  componentDidMount() {
-    this.props.dispatch(fetchBarsIfNeeded());
-  }
-
   render() {
     const bars = this.props.items || [];
     return (

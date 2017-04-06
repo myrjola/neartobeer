@@ -5,6 +5,7 @@ import { createLogger } from 'redux-logger';
 import { persistStore, autoRehydrate } from 'redux-persist';
 
 import beersUnderXReducer from './reducers';
+import { fetchBarsIfNeeded } from './actions/bars';
 
 const loggerMiddleware = createLogger();
 
@@ -20,8 +21,8 @@ export default function configureStore(preloadedState) {
       autoRehydrate(),
     ),
   );
-
-  persistStore(store, { storage: AsyncStorage });
+  persistStore(store, { storage: AsyncStorage },
+               () => store.dispatch(fetchBarsIfNeeded));
 
   return store;
 }
