@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, StyleSheet, StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 
@@ -14,21 +14,19 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class BeersUnderX extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <View style={StyleSheet.absoluteFillObject}>
-          <StatusBar hidden={true} />
-          <FilteredBarMap />
-          <View style={styles.buttonRow}>
-            <MaxBeerPriceSelector />
-          </View>
-        </View>
-      </Provider>
-    );
-  }
-}
+const BeersUnderX = () => (
+  <Provider store={store}>
+    <View style={StyleSheet.absoluteFillObject}>
+      <StatusBar hidden={true} />
+      <FilteredBarMap />
+      <View style={styles.buttonRow}>
+        <MaxBeerPriceSelector />
+      </View>
+    </View>
+  </Provider>
+);
+
+export default BeersUnderX;
 
 // Local Variables:
 // mode: js2-jsx
