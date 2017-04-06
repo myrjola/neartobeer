@@ -10,6 +10,7 @@ const store = configureStore();
 
 const styles = StyleSheet.create({
   buttonRow: {
+    padding: 10,
     backgroundColor: '#F1EDEA',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -39,6 +40,7 @@ const BeersUnderX = () => (
       <StatusBar hidden={true} />
       <FilteredBarMap />
       <View style={styles.buttonRow}>
+        <Text>About</Text>
         <MaxBeerPriceSelector />
         <TouchableHighlight onPress={zoomToUserLocation}>
           <Text>Zoom</Text>
