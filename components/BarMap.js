@@ -7,6 +7,7 @@ import WalkingDirections from '../containers/WalkingDirections';
 
 const BarMap = ({ items }) => (
   <MapView
+    ref={(ref) => { this.map = ref; }}
     style={StyleSheet.absoluteFillObject}
     showsUserLocation={true}
     initialRegion={{
