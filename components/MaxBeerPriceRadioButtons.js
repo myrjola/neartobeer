@@ -20,7 +20,7 @@ function getOptionColor(option) {
 
 const MaxBeerPriceOption = (option, selected, onSelect, index) => (
   <TouchableWithoutFeedback onPress={onSelect} key={index}>
-    <View style={{ backgroundColor: getOptionColor(option) }}>
+    <View style={{ backgroundColor: selected ? getOptionColor(option) : 'transparent' }}>
       <Text>{extractNumber(option)}kr</Text>
     </View>
   </TouchableWithoutFeedback>
