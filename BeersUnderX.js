@@ -14,6 +14,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F1EDEA',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    borderBottomColor: '#bbb',
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });
 
