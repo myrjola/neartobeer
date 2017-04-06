@@ -1,8 +1,8 @@
-import {AsyncStorage} from 'react-native';
+import { AsyncStorage } from 'react-native';
 import { compose, createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import {persistStore, autoRehydrate} from 'redux-persist';
+import { persistStore, autoRehydrate } from 'redux-persist';
 
 import beersUnderXReducer from './reducers';
 
@@ -17,11 +17,11 @@ export default function configureStore(preloadedState) {
         thunkMiddleware,
         loggerMiddleware,
       ),
-      autoRehydrate()
-    )
+      autoRehydrate(),
+    ),
   );
 
-  persistStore(store, {storage: AsyncStorage});
+  persistStore(store, { storage: AsyncStorage });
 
   return store;
 }
