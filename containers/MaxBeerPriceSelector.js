@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { SegmentedControls } from 'react-native-radio-buttons';
 
+import MaxBeerPriceRadioButtons from '../components/MaxBeerPriceRadioButtons';
 import { setMaxBeerPriceCategory } from '../actions/maxBeerPriceCategory';
 import { maxBeerPriceCategories } from '../reducers/maxBeerPriceCategory';
 
@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
 const MaxBeerPriceSelector = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(SegmentedControls);
+)(MaxBeerPriceRadioButtons);
 
 export default MaxBeerPriceSelector;
 
