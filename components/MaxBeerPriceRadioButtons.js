@@ -1,22 +1,10 @@
 import React from 'react';
-import { Text, View, TouchableWithoutFeedback } from 'react-native';
+import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import { RadioButtons } from 'react-native-radio-buttons';
 
 import { BEER_UNDER_30, BEER_UNDER_40, BEER_UNDER_50 } from '../reducers/maxBeerPriceCategory';
 
 const extractNumber = string => string.match(/\d+/)[0];
-
-function getOptionColor(option) {
-  switch (option) {
-    case BEER_UNDER_30:
-      return '#50B07C';
-    case BEER_UNDER_40:
-      return '#FABB3C';
-    default:
-    case BEER_UNDER_50:
-      return '#E45D3E';
-  }
-}
 
 const MaxBeerPriceOption = (option, selected, onSelect, index) => (
   <TouchableWithoutFeedback onPress={onSelect} key={index}>
@@ -33,6 +21,19 @@ const MaxBeerPriceRadioButtons = props => (
     renderContainer={RadioButtons.renderHorizontalContainer}
   />
 );
+
+function getOptionColor(option) {
+  switch (option) {
+    case BEER_UNDER_30:
+      return '#50B07C';
+    case BEER_UNDER_40:
+      return '#FABB3C';
+    default:
+    case BEER_UNDER_50:
+      return '#E45D3E';
+  }
+}
+
 
 export default MaxBeerPriceRadioButtons;
 
