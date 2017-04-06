@@ -10,6 +10,7 @@ const BarMap = ({ items }) => (
     ref={(ref) => { this.map = ref; }}
     style={StyleSheet.absoluteFillObject}
     showsUserLocation={true}
+    showsMyLocationButton={false}
     initialRegion={{
       latitude: 59.329323,
       longitude: 18.068580,
