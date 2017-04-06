@@ -8,6 +8,12 @@ import MaxBeerPriceSelector from './containers/MaxBeerPriceSelector.js';
 
 const store = configureStore();
 
+const styles = StyleSheet.create({
+  buttonRow: {
+    justifyContent: 'space-between',
+  },
+});
+
 export default class BeersUnderX extends Component {
   render() {
     return (
@@ -15,7 +21,9 @@ export default class BeersUnderX extends Component {
         <View style={StyleSheet.absoluteFillObject}>
           <StatusBar hidden={true} />
           <FilteredBarMap />
-          <MaxBeerPriceSelector />
+          <View style={styles.buttonRow}>
+            <MaxBeerPriceSelector />
+          </View>
         </View>
       </Provider>
     );
