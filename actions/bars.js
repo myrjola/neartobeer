@@ -36,18 +36,26 @@ function fetchBars() {
   };
 }
 
-function shouldFetchBars(state) {
+function shouldFetchBars(dispatch, state) {
   if (!state.bars) {
     return true;
   } else if (state.bars.isFetching) {
     return false;
   }
+
+  // The cache invalidates after one hour.
+  const ONE_HOUR = 60 * 60 * 1000; /* ms */
+
+  if (Date.now() - state.bars.lastUpdated > ONE_HOUR) {
+    dispatch(invalidateBars);
+  }
+
   return state.bars.didInvalidate;
 }
 
 export function fetchBarsIfNeeded() {
   return (dispatch, getState) => {
-    if (shouldFetchBars(getState())) {
+    if (shouldFetchBars(dispatch, getState())) {
       return dispatch(fetchBars());
     }
   };
