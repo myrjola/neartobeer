@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   viewContainer: {
-    backgroundColor: '#F1EDEA',
     flexDirection: 'row',
     justifyContent: 'center',
   },

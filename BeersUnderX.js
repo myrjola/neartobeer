@@ -10,6 +10,7 @@ const store = configureStore();
 
 const styles = StyleSheet.create({
   buttonRow: {
+    backgroundColor: '#F1EDEA',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
