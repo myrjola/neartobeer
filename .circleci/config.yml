@@ -24,6 +24,8 @@ jobs:
             - ~/.npm
             - ~/.cache/yarn
             - /usr/local/lib/node_modules/
+            - /usr/local/bin/yarn
+            - /usr/local/bin/yarnpkg
       - restore_cache:
           key: beersunderx-{{ .Branch }}-jest
       - run:
