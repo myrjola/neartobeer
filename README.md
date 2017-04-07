@@ -2,7 +2,7 @@
 
 ## Getting started ##
 
-1. Set up [React Native](https://facebook.github.io/react-native/docs/getting-started.html)
-2. Run tests with `npm test`
-
-
+1. Install https://nodejs.org/en/ and https://yarnpkg.com/en/.
+2. Run `yarn install` to install dependencies.
+3. Set up [React Native](https://facebook.github.io/react-native/docs/getting-started.html).
+4. Run tests with `npm test`.
