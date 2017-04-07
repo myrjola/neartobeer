@@ -26,5 +26,6 @@ jobs:
             - node_modules
             - ~/.npm
             - ~/.cache/yarn
+            - /usr/local/lib/node_modules/
       - store_artifacts:
           path: artifacts
