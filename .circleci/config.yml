@@ -24,6 +24,7 @@ jobs:
           key: projectname-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
+            - .jest-cache
             - ~/.npm
             - ~/.cache/yarn
             - /usr/local/lib/node_modules/
