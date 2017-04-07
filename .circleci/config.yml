@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: node:7.4.0
-    working_directory: ~/beersunderx
+    working_directory: "/root/beersunderx"
     steps:
       - checkout
       - restore_cache:
