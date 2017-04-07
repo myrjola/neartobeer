@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: beersunderx-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum "/usr/local/bin/yarn" }}
+          key: beersunderx-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run:
           name: Create artifacts directory
           command: mkdir -p artifacts
@@ -18,14 +18,14 @@ jobs:
           name: Install Dependencies
           command: yarn install
       - save_cache:
-          key: beersunderx-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum "/usr/local/bin/yarn" }}
+          key: beersunderx-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
             - ~/.npm
             - ~/.cache/yarn
             - /usr/local/lib/node_modules/
       - restore_cache:
-          key: beersunderx-{{ .Branch }}-jest-{{ epoch }}
+          key: beersunderx-{{ .Branch }}-jest
       - run:
           name: NPM Test
           command: npm test
