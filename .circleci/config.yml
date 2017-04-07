@@ -6,9 +6,11 @@ jobs:
     working_directory: ~/beersunderx
     steps:
       - checkout
+      - restore_cache:
+          key: projectname-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run:
           name: Create artifacts directory
-          command: mkdir -p ~/beersunderx/artifacts
+          command: mkdir -p artifacts
       - run:
           name: Install Yarn
           command: npm install --global yarn
@@ -18,5 +20,11 @@ jobs:
       - run:
           name: NPM Test
           command: npm test
+      - save_cache:
+          key: projectname-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+            - ~/.npm
+            - ~/.cache/yarn
       - store_artifacts:
-          path: ~/beersunderx/artifacts
+          path: artifacts
