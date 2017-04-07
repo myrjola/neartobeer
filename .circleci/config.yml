@@ -11,8 +11,7 @@ jobs:
           command: mkdir -p ~/beersunderx/artifacts
       - run:
           name: Install Dependencies
-          command: npm install --global yarn
-          command: yarn install
+          command: npm install
       - run:
           name: NPM Test
           command: npm test
