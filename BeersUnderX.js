@@ -1,8 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, StatusBar, Text } from 'react-native';
 import { Provider } from 'react-redux';
+import { Router, Scene } from 'react-native-router-flux';
 
 import configureStore from './configureStore';
+import AboutButton from './components/AboutButton';
+import AboutView from './components/AboutView';
 import FilteredBarMap from './containers/FilteredBarMap';
 import MaxBeerPriceSelector from './containers/MaxBeerPriceSelector';
 import ZoomToUserLocationButton from './components/ZoomToUserLocationButton';
@@ -23,17 +26,26 @@ const styles = StyleSheet.create({
   },
 });
 
+const MainView = () => (
+  <View style={styles.appView}>
+    <StatusBar hidden={true} />
+    <View style={styles.buttonRow}>
+      <AboutButton />
+      <MaxBeerPriceSelector />
+      <ZoomToUserLocationButton />
+    </View>
+    <FilteredBarMap />
+  </View>
+);
+
 const BeersUnderX = () => (
   <Provider store={store}>
-    <View style={styles.appView}>
-      <StatusBar hidden={true} />
-      <View style={styles.buttonRow}>
-        <Text>About</Text>
-        <MaxBeerPriceSelector />
-        <ZoomToUserLocationButton />
-      </View>
-      <FilteredBarMap />
-    </View>
+    <Router>
+      <Scene key="root" hideNavBar={true}>
+        <Scene key="mainView" component={MainView} initial={true} />
+        <Scene key="aboutView" title="About us" hideNavBar={false} component={AboutView} />
+      </Scene>
+    </Router>
   </Provider>
 );
 
