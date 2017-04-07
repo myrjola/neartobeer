@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: beersunderx-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: beersunderx-node-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run:
           name: Create artifacts directory
           command: mkdir -p artifacts
@@ -18,7 +18,7 @@ jobs:
           name: Install Dependencies
           command: yarn install
       - save_cache:
-          key: beersunderx-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: beersunderx-node-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
             - ~/.npm
