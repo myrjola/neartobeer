@@ -1,4 +1,4 @@
-# BeersUnderX [![Build Status](https://travis-ci.com/myrjola/beersunderx.svg?token=KHU5jpVYXyXbWhN3y83W&branch=master)](https://travis-ci.com/myrjola/beersunderx) [![CircleCI](https://circleci.com/gh/myrjola/beersunderx/tree/master.svg?style=svg&circle-token=24a0c268702e9277c48e0970a7fca373d9fb2447)] #
+# BeersUnderX [![Build Status](https://travis-ci.com/myrjola/beersunderx.svg?token=KHU5jpVYXyXbWhN3y83W&branch=master)](https://travis-ci.com/myrjola/beersunderx) ![CircleCI](https://circleci.com/gh/myrjola/beersunderx/tree/master.svg?style=svg&circle-token=24a0c268702e9277c48e0970a7fca373d9fb2447) #
 
 ## Getting started ##
 
