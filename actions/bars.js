@@ -24,7 +24,7 @@ export const errorBars = error => ({
   error,
 });
 
-function fetchBars() {
+export function fetchBars() {
   return (dispatch) => {
     dispatch(requestBars);
     return fetch('http://beersunderthirty.org/places/places.json')
