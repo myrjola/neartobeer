@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:7.4.0
+    working_directory: ~/beersunderx
+    steps:
+      - checkout
+      - run:
+          name: Pre-Dependencies
+          command: mkdir -p ~/beersunderx/artifacts
+      - run:
+          name: Install Dependencies
+          command: npm install --global yarn
+          command: yarn install
+      - run:
+          name: NPM Test
+          command: npm test
+      - store_artifacts:
+          path: ~/beersunderx/artifacts
