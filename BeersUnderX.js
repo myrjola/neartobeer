@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, StatusBar, Text } from 'react-native';
+import { View, StyleSheet, StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { Router, Scene } from 'react-native-router-flux';
 
