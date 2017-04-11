@@ -1,16 +1,15 @@
 import React, { PropTypes } from 'react';
-import { StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
 import BarMarkerContainer from '../containers/BarMarkerContainer';
 import WalkingDirections from '../containers/WalkingDirections';
 
-const mapStyle = StyleSheet.create({ flex: 1 });
-
 const BarMap = ({ items }) => (
   <MapView
     ref={(ref) => { this.map = ref; }}
-    style={mapStyle}
+    style={{
+      flex: 1,
+    }}
     showsUserLocation={true}
     showsMyLocationButton={false}
     initialRegion={{
