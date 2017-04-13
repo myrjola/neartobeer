@@ -4,6 +4,7 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 const styles = StyleSheet.create({
   appView: {
     flex: 1,
+    backgroundColor: '#fcbb3a',
     // There is a NavBar on top. This was the best way to not get overlapped by
     // it https://github.com/aksonov/react-native-router-flux/issues/1279#issuecomment-253459678
     ...Platform.select({
@@ -15,13 +16,35 @@ const styles = StyleSheet.create({
       },
     }),
   },
+  title: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+  subtitle: {
+    textAlign: 'center',
+  },
 });
 
 const AboutView = () => (
   <View style={styles.appView}>
-    <Text>{'\n'}Contact info, graphics and other cool stuff.</Text>
-  </View>
+        <View style={styles.text}>
+          <Text style={styles.title}>
+            Beeriffic
+          </Text>
+          <Text style={styles.subtitle}>
+            Your best bet to get a cheap beer nearby
+          </Text>
+        </View>
+</View>
+
+  // <View style={styles.appView}>
+  //   <Text>{'\n'} Contact info, graphics and other cool stuff.</Text>
+  // </View>
+
 );
+
+
 
 export default AboutView;
 
