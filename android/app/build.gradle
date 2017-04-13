@@ -96,6 +96,17 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
     }
+
+    signingConfigs {
+        release {
+            Properties properties = new Properties()
+            properties.load(project.file('local.properties').newDataInputStream())
+            storeFile file(properties.getProperty('BEERSUNDERX_RELEASE_STORE_FILE'))
+            storePassword properties.getProperty('BEERSUNDERX_RELEASE_STORE_PASSWORD')
+            keyAlias properties.getProperty('BEERSUNDERX_RELEASE_KEY_ALIAS')
+            keyPassword properties.getProperty('BEERSUNDERX_RELEASE_KEY_PASSWORD')
+        }
+    }
     splits {
         abi {
             reset()
@@ -106,6 +117,7 @@ android {
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }

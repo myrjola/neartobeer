@@ -2,8 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:7.4.0
+      - image: myrjola/react-native-android-appium:v0.3
     working_directory: "/root/beersunderx"
+    environment:
+      QEMU_AUDIO_DRV: none
     steps:
       - checkout
       - restore_cache:
@@ -11,9 +13,6 @@ jobs:
       - run:
           name: Create artifacts directory
           command: mkdir -p artifacts
-      - run:
-          name: Install Yarn
-          command: npm install --global yarn
       - run:
           name: Install Dependencies
           command: yarn install
@@ -24,8 +23,6 @@ jobs:
             - ~/.npm
             - ~/.cache/yarn
             - /usr/local/lib/node_modules/
-            - /usr/local/bin/yarn
-            - /usr/local/bin/yarnpkg
       - restore_cache:
           key: beersunderx-{{ .Branch }}-jest
       - run:
@@ -35,5 +32,55 @@ jobs:
           key: beersunderx-{{ .Branch }}-jest-{{ epoch }}
           paths:
             - .jest-cache
+      - run:
+          name: Create integration test keystore
+          command: |
+            cd android/app && \
+              keytool -genkey -v -keystore beersunderx.keystore \
+                -alias beersunderx -keyalg RSA -keysize 2048 \
+                -keypass android -storepass android \
+                -dname "CN=Android Integrationtest,O=BeersUnderX,C=SE"
+      - run:
+          name: Set the correct signing settings
+          command: |
+            cp android/app/local.properties.integration \
+               android/app/local.properties
+      - restore_cache:
+          key: beersunderx-gradle-{{ .Branch }}-{{ checksum "android/app/build.gradle" }}
+      - run:
+          name: Assemble APKs
+          command: cd android && ./gradlew assemble
+          environment:
+            TERM: dumb
+      - save_cache:
+          key: beersunderx-gradle-{{ .Branch }}-{{ checksum "android/app/build.gradle" }}
+          paths:
+            - ~/.gradle
+            - android/build
+            - android/app/build
+      - run:
+          name: Start emulator, it takes long to start
+          command: |
+            /opt/android/emulator/emulator \
+              -avd testAVD \
+              -no-audio \
+              -no-window
+          background: true
+      - run:
+          name: Start Appium
+          command: appium
+          background: true
+      - run:
+          name: Check that emulator is ready
+          command: source scripts/funcs.bash && waitForAVD
+      - run:
+          name: Take screenshot
+          command: |
+            adb shell screencap -p | \
+              perl -pe 's/\x0D\x0A/\x0A/g' > \
+                artifacts/screen-$(date +"%T").png
+      - run:
+          name: Integration tests
+          command: npm run test:integration
       - store_artifacts:
           path: artifacts
