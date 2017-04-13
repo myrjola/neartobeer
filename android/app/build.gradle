@@ -86,6 +86,13 @@ android {
     compileSdkVersion 23
     buildToolsVersion '25.0.0'
 
+    def continuousIntegrationBuild = System.getenv("CI")
+
+    // Disable pre-dexing in CI
+    if (continuousIntegrationBuild != null) {
+      dexOptions.preDexLibraries = false
+    }
+
     defaultConfig {
         applicationId "com.beersunderx"
         minSdkVersion 16

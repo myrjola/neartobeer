@@ -14,7 +14,9 @@
     "it": true,
     "xit": true,
     "beforeEach": true,
-    "jest": true
+    "jest": true,
+    "before": true,
+    "appiumUtils": true
   },
   "parser": "babel-eslint",
   "parserOptions": {

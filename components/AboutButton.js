@@ -1,10 +1,12 @@
 import React from 'react';
-import { Text, TouchableHighlight } from 'react-native';
+import { Text, TouchableHighlight, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 const AboutButton = () => (
   <TouchableHighlight onPress={Actions.aboutView}>
-    <Text>About</Text>
+    <View accessibilityLabel="About button">
+      <Text>About</Text>
+    </View>
   </TouchableHighlight>
 );
 

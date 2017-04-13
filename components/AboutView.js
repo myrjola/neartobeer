@@ -27,24 +27,17 @@ const styles = StyleSheet.create({
 });
 
 const AboutView = () => (
-  <View style={styles.appView}>
-        <View style={styles.text}>
-          <Text style={styles.title}>
-            Beeriffic
-          </Text>
-          <Text style={styles.subtitle}>
-            Your best bet to get a cheap beer nearby
-          </Text>
-        </View>
-</View>
-
-  // <View style={styles.appView}>
-  //   <Text>{'\n'} Contact info, graphics and other cool stuff.</Text>
-  // </View>
-
+  <View style={styles.appView} accessibilityLabel="About the service">
+    <View style={styles.text}>
+      <Text style={styles.title}>
+        Beeriffic
+      </Text>
+      <Text style={styles.subtitle}>
+        Your best bet to get a cheap beer nearby
+      </Text>
+    </View>
+  </View>
 );
-
-
 
 export default AboutView;
 

@@ -6,7 +6,16 @@ jobs:
     working_directory: "/root/beersunderx"
     environment:
       QEMU_AUDIO_DRV: none
+      LC_ALL: "C.UTF-8"
     steps:
+      - run:
+          name: Start emulator, it takes long to start
+          command: |
+            /opt/android/emulator/emulator \
+              -avd testAVD \
+              -no-audio \
+              -no-window
+          background: true
       - checkout
       - restore_cache:
           key: beersunderx-node-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
@@ -59,18 +68,6 @@ jobs:
             - android/build
             - android/app/build
       - run:
-          name: Start emulator, it takes long to start
-          command: |
-            /opt/android/emulator/emulator \
-              -avd testAVD \
-              -no-audio \
-              -no-window
-          background: true
-      - run:
-          name: Start Appium
-          command: appium
-          background: true
-      - run:
           name: Check that emulator is ready
           command: source scripts/funcs.bash && waitForAVD
       - run:
@@ -78,7 +75,7 @@ jobs:
           command: |
             adb shell screencap -p | \
               perl -pe 's/\x0D\x0A/\x0A/g' > \
-                artifacts/screen-$(date +"%T").png
+                artifacts/screen-$(date -I).png
       - run:
           name: Integration tests
           command: npm run test:integration
