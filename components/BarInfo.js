@@ -68,7 +68,7 @@ const BarInfo = ({ bar }) => (
           </Text>
           <WebView source={{ html: bar.post_content }} style={styles.barDescription} scrollEnabled={false} />
           <View style={styles.priceBadgeBorder}>
-          <Image source={chooseBeerIcon(bar.post_category)} style={styles.priceBadge} />
+            <Image source={chooseBeerIcon(bar.post_category)} style={styles.priceBadge} />
           </View>
         </View>
     }
