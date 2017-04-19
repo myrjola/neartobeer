@@ -10,6 +10,7 @@ exports[`renders with bars 1`] = `
       "longitudeDelta": 0.0421,
     }
   }
+  onPress={undefined}
   showsMyLocationButton={false}
   showsUserLocation={true}
   style={
@@ -73,6 +74,7 @@ exports[`renders without bars 1`] = `
       "longitudeDelta": 0.0421,
     }
   }
+  onPress={undefined}
   showsMyLocationButton={false}
   showsUserLocation={true}
   style={

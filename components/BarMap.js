@@ -4,12 +4,13 @@ import MapView from 'react-native-maps';
 import BarMarkerContainer from '../containers/BarMarkerContainer';
 import WalkingDirections from '../containers/WalkingDirections';
 
-const BarMap = ({ items }) => (
+const BarMap = ({ items, onPress }) => (
   <MapView
     ref={(ref) => { this.map = ref; }}
     style={{
       flex: 1,
     }}
+    onPress={onPress}
     showsUserLocation={true}
     showsMyLocationButton={false}
     initialRegion={{
@@ -38,6 +39,7 @@ BarMap.propTypes = {
     post_id: PropTypes.number.isRequired,
   }).isRequired),
   isFetching: PropTypes.bool.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 BarMap.defaultProps = {
