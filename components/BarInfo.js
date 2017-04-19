@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, View, WebView } from 'react-native';
 
 const { height, width } = Dimensions.get('window');
 
@@ -25,19 +25,28 @@ const styles = StyleSheet.create({
     ...viewCommon,
     ...StyleSheet.absoluteFillObject,
   },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  barDescription: {
+    flex: 1,
+    backgroundColor: 'transparent',
+  },
 });
 
 const BarInfo = ({ bar }) => (
   <View style={bar ? styles.compactView : styles.hiddenView} accessibilityLabel="Bar information">
     {
       bar &&
-        <View>
-          <Text>
-            Beeriffic
-          </Text>
-          <Text>
+        <View style={StyleSheet.absoluteFillObject}>
+          <Text style={styles.title}>
             { bar.post_title }
           </Text>
+          <Text>
+            {bar.post_address}{'\n'}
+          </Text>
+          <WebView source={{ html: bar.post_content }} style={styles.barDescription} scrollEnabled={false} />
         </View>
     }
   </View>
