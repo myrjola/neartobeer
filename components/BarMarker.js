@@ -1,11 +1,21 @@
 import React, { PropTypes } from 'react';
 import MapView from 'react-native-maps';
+import { Image, StyleSheet } from 'react-native';
 
 import { BEER_UNDER_30, BEER_UNDER_40, BEER_UNDER_50 } from '../reducers/maxBeerPriceCategory';
 
 import greenmug from '../images/GreenMug.png';
 import yellowmug from '../images/YellowMug.png';
 import redmug from '../images/RedMug.png';
+
+const barMarkerSize = 32;
+
+const styles = StyleSheet.create({
+  barMarker: {
+    width: barMarkerSize,
+    height: barMarkerSize,
+  },
+});
 
 export function chooseBeerIcon(maxBeerPriceCategory) {
   switch (maxBeerPriceCategory) {
@@ -26,12 +36,10 @@ export const getBarCoordinate = bar => ({
 
 const BarMarker = ({ bar, onPress }) => (
   <MapView.Marker
-    title={bar.post_title}
-    description={bar.post_content}
     coordinate={getBarCoordinate(bar)}
-    image={chooseBeerIcon(bar.post_category)}
     onPress={onPress}
   >
+    <Image source={chooseBeerIcon(bar.post_category)} style={styles.barMarker} />
     <MapView.Callout tooltip={true} />
   </MapView.Marker>
 );
