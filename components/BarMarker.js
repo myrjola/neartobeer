@@ -31,7 +31,9 @@ const BarMarker = ({ bar, onPress }) => (
     coordinate={getBarCoordinate(bar)}
     image={chooseBeerIcon(bar.post_category)}
     onPress={onPress}
-  />
+  >
+    <MapView.Callout tooltip={true} />
+  </MapView.Marker>
 );
 
 BarMarker.propTypes = {

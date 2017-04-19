@@ -12,7 +12,11 @@ exports[`renders 1`] = `
   image="GreenMug.png"
   onPress={[Function]}
   title="MacLarens"
-/>
+>
+  <Callout
+    tooltip={true}
+  />
+</Marker>
 `;
 
 exports[`renders with red icon 1`] = `
@@ -27,7 +31,11 @@ exports[`renders with red icon 1`] = `
   image="RedMug.png"
   onPress={[Function]}
   title="Lion Bar Sveavägen 39"
-/>
+>
+  <Callout
+    tooltip={true}
+  />
+</Marker>
 `;
 
 exports[`renders with yellow icon 1`] = `
@@ -42,5 +50,9 @@ exports[`renders with yellow icon 1`] = `
   image="YellowMug.png"
   onPress={[Function]}
   title="Lion Bar Sveavägen 39"
-/>
+>
+  <Callout
+    tooltip={true}
+  />
+</Marker>
 `;
