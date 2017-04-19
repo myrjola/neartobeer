@@ -21,6 +21,7 @@ Object {
   "didInvalidate": true,
   "isFetching": false,
   "items": Array [],
+  "selectedBarId": null,
 }
 `;
 
@@ -35,6 +36,15 @@ Array [
     "type": "RECEIVE_BARS",
   },
 ]
+`;
+
+exports[`is possible to deselect a bar when no one is selected 1`] = `
+Object {
+  "didInvalidate": true,
+  "isFetching": false,
+  "items": Array [],
+  "selectedBarId": null,
+}
 `;
 
 exports[`receives new bars 1`] = `
@@ -77,6 +87,7 @@ Object {
     },
   ],
   "lastUpdated": 1482363367071,
+  "selectedBarId": null,
 }
 `;
 
@@ -132,5 +143,24 @@ Object {
   "didInvalidate": true,
   "isFetching": true,
   "items": Array [],
+  "selectedBarId": null,
+}
+`;
+
+exports[`selects a bar and deselects it 1`] = `
+Object {
+  "didInvalidate": true,
+  "isFetching": false,
+  "items": Array [],
+  "selectedBarId": "DUMMY_ID",
+}
+`;
+
+exports[`selects a bar and deselects it 2`] = `
+Object {
+  "didInvalidate": true,
+  "isFetching": false,
+  "items": Array [],
+  "selectedBarId": null,
 }
 `;

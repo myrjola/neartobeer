@@ -1,9 +1,10 @@
-import { REQUEST_BARS, RECEIVE_BARS, INVALIDATE_BARS, ERROR_BARS } from '../actions/bars.js';
+import { REQUEST_BARS, RECEIVE_BARS, INVALIDATE_BARS, ERROR_BARS, SELECT_BAR, DESELECT_BAR } from '../actions/bars.js';
 
 export const initialState = {
   isFetching: false,
   didInvalidate: true,
   items: [],
+  selectedBarId: null,
 };
 
 function bars(state = initialState, action) {
@@ -29,6 +30,16 @@ function bars(state = initialState, action) {
         isFetching: false,
         error: action.error,
       });
+    case SELECT_BAR:
+      return {
+        ...state,
+        selectedBarId: action.barId,
+      };
+    case DESELECT_BAR:
+      return {
+        ...state,
+        selectedBarId: null,
+      };
     default:
       return state;
   }

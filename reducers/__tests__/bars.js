@@ -1,6 +1,7 @@
 import mockStore from 'redux-mock-store';
 
-import { requestBars, receiveBars, invalidateBars, fetchBarsIfNeeded } from '../../actions/bars';
+import { requestBars, receiveBars, invalidateBars,
+         fetchBarsIfNeeded, selectBar, deselectBar } from '../../actions/bars';
 import bars, { initialState } from '../bars';
 
 const exampleBars = [
@@ -60,6 +61,15 @@ it('requests new bars', () => {
 
 it('receives new bars', () => {
   expect(bars(initialState, receiveBars(exampleBars))).toMatchSnapshot();
+});
+
+it('selects a bar and deselects it', () => {
+  expect(bars(initialState, selectBar('DUMMY_ID'))).toMatchSnapshot();
+  expect(bars(initialState, deselectBar)).toMatchSnapshot();
+});
+
+it('is possible to deselect a bar when no one is selected', () => {
+  expect(bars(initialState, deselectBar)).toMatchSnapshot();
 });
 
 it('errors when HTTP request fails', async () => {

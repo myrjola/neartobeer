@@ -4,6 +4,8 @@ export const REQUEST_BARS = 'REQUEST_BARS';
 export const RECEIVE_BARS = 'RECEIVE_BARS';
 export const ERROR_BARS = 'ERROR_BARS';
 export const INVALIDATE_BARS = 'INVALIDATE_BARS';
+export const SELECT_BAR = 'SELECT_BAR';
+export const DESELECT_BAR = 'DESELECT_BAR';
 
 export const invalidateBars = {
   type: INVALIDATE_BARS,
@@ -23,6 +25,15 @@ export const errorBars = error => ({
   type: ERROR_BARS,
   error,
 });
+
+export const selectBar = barId => ({
+  type: SELECT_BAR,
+  barId,
+});
+
+export const deselectBar = {
+  type: DESELECT_BAR,
+};
 
 export function fetchBars() {
   return (dispatch) => {
