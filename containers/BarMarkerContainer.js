@@ -7,7 +7,7 @@ import { selectBar } from '../actions/bars';
 const mapDispatchToProps = (dispatch, props) => ({
   onPress: () => {
     dispatch(fetchWalkingDirectionsIfNeeded(getBarCoordinate(props.bar)));
-    dispatch(selectBar(props.bar));
+    dispatch(selectBar(props.bar.post_id));
   },
 });
 

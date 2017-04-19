@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import BarInfo from '../components/BarInfo';
 
 const mapStateToProps = state => ({
-  bar: state.bars.selectedBarId,
+  bar: state.bars.items.find(bar => bar.post_id === state.bars.selectedBarId),
 });
 
 const BarInfoContainer = connect(
