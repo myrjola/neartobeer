@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 });
 
 const BarInfo = ({ bar }) => (
-  <View style={styles.compactView} accessibilityLabel="Bar information">
+  <View style={bar ? styles.compactView : styles.hiddenView} accessibilityLabel="Bar information">
     {
       bar &&
         <View>
