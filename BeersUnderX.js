@@ -8,6 +8,7 @@ import AboutButton from './components/AboutButton';
 import AboutView from './components/AboutView';
 import FilteredBarMap from './containers/FilteredBarMap';
 import MaxBeerPriceSelector from './containers/MaxBeerPriceSelector';
+import BarInfoContainer from './containers/BarInfoContainer';
 import ZoomToUserLocationButton from './components/ZoomToUserLocationButton';
 
 const store = configureStore();
@@ -35,6 +36,7 @@ const MainView = () => (
       <ZoomToUserLocationButton />
     </View>
     <FilteredBarMap />
+    <BarInfoContainer />
   </View>
 );
 
