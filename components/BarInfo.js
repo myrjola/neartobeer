@@ -1,7 +1,11 @@
 import React, { PropTypes } from 'react';
-import { Dimensions, StyleSheet, Text, View, WebView } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View, WebView } from 'react-native';
+
+import { chooseBeerIcon } from './BarMarker';
 
 const { height, width } = Dimensions.get('window');
+
+const borderColor = '#bbb';
 
 const viewCommon = {
   position: 'absolute',
@@ -9,6 +13,8 @@ const viewCommon = {
   width,
   height,
 };
+
+const badgeSize = height / 10;
 
 const styles = StyleSheet.create({
   hiddenView: {
@@ -18,7 +24,7 @@ const styles = StyleSheet.create({
   compactView: {
     ...viewCommon,
     top: height * (3.0 / 4.0),
-    borderTopColor: '#bbb',
+    borderTopColor: borderColor,
     borderTopWidth: StyleSheet.hairlineWidth,
   },
   expandedView: {
@@ -32,6 +38,20 @@ const styles = StyleSheet.create({
   barDescription: {
     flex: 1,
     backgroundColor: 'transparent',
+  },
+  priceBadgeBorder: {
+    position: 'absolute',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor,
+    left: width * (3 / 4),
+    top: -badgeSize / 2,
+    width: badgeSize,
+    height: badgeSize,
+    borderRadius: badgeSize / 2,
+  },
+  priceBadge: {
+    width: badgeSize,
+    height: badgeSize,
   },
 });
 
@@ -47,6 +67,9 @@ const BarInfo = ({ bar }) => (
             {bar.post_address}{'\n'}
           </Text>
           <WebView source={{ html: bar.post_content }} style={styles.barDescription} scrollEnabled={false} />
+          <View style={styles.priceBadgeBorder}>
+          <Image source={chooseBeerIcon(bar.post_category)} style={styles.priceBadge} />
+          </View>
         </View>
     }
   </View>

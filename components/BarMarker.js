@@ -7,7 +7,7 @@ import greenmug from '../images/GreenMug.png';
 import yellowmug from '../images/YellowMug.png';
 import redmug from '../images/RedMug.png';
 
-function chooseBeerIcon(maxBeerPriceCategory) {
+export function chooseBeerIcon(maxBeerPriceCategory) {
   switch (maxBeerPriceCategory) {
     case BEER_UNDER_30:
       return greenmug;
