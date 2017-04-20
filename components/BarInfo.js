@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const BarInfo = ({ bar }) => (
+const BarInfo = ({ bar, walkingDuration, walkingDistance }) => (
   <View
     style={bar ? styles.compactView : styles.hiddenView}
     accessibilityLabel="Bar information"
@@ -80,6 +80,7 @@ const BarInfo = ({ bar }) => (
           </Text>
           <Text>
             {bar.post_address}{'\n'}
+            {walkingDuration} ({walkingDistance}) walk{'\n'}
           </Text>
           <WebView source={{ html: bar.post_content }} style={styles.barDescription} scrollEnabled={false} />
         </View>
@@ -100,8 +101,9 @@ BarInfo.propTypes = {
   bar: PropTypes.shape({
     post_title: PropTypes.string.isRequired,
   }),
+  walkingDuration: PropTypes.string.isRequired,
+  walkingDistance: PropTypes.string.isRequired,
 };
-
 
 export default BarInfo;
 

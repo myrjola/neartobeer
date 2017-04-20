@@ -11,16 +11,21 @@ export const requestWalkingDirections = destination => ({
   destination,
 });
 
-export const receiveWalkingDirections = (origin, coords, destination) => ({
+export const receiveWalkingDirections = (origin, route, destination) => ({
   type: RECEIVE_WALKING_DIRECTIONS,
   origin,
-  coords,
+  route,
   destination,
 });
 
-function decodeGoogleDirectionsPolyline(polylineString) {
-  const coordinates = polyline.decode(polylineString);
-  return coordinates.map(coordinate => ({ latitude: coordinate[0], longitude: coordinate[1] }));
+function decodeGoogleRoute(route) {
+  const coordinates = polyline.decode(route.overview_polyline.points);
+  const routeInformation = route.legs[0];
+  return {
+    coords: coordinates.map(coordinate => ({ latitude: coordinate[0], longitude: coordinate[1] })),
+    distance: routeInformation.distance.text,
+    duration: routeInformation.duration.text,
+  };
 }
 
 export const errorWalkingDirections = error => ({
@@ -49,8 +54,8 @@ function fetchWalkingDirections(destination) {
         return fetch(url)
           .then(checkStatus)
           .then(response => response.json())
-          .then(json => decodeGoogleDirectionsPolyline(json.routes[0].overview_polyline.points))
-          .then(coords => dispatch(receiveWalkingDirections(origin, coords, destination)))
+          .then(json => decodeGoogleRoute(json.routes[0]))
+          .then(route => dispatch(receiveWalkingDirections(origin, route, destination)))
           .catch(error => dispatch(errorWalkingDirections(error)));
       },
       error => dispatch(errorWalkingDirections(error)),

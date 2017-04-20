@@ -15,6 +15,8 @@ export const initialState = {
     latitude: 0,
   },
   coords: [],
+  duration: '',
+  distance: '',
 };
 
 function walkingDirections(state = initialState, action) {
@@ -30,7 +32,7 @@ function walkingDirections(state = initialState, action) {
         return Object.assign({}, state, {
           isFetching: false,
           origin: action.origin,
-          coords: action.coords,
+          ...action.route,
         });
       }
       return state;

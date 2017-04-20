@@ -7,6 +7,8 @@ Object {
     "latitude": 0,
     "longitude": 0,
   },
+  "distance": "",
+  "duration": "",
   "error": "",
   "isFetching": false,
   "origin": Object {
@@ -64,6 +66,8 @@ Object {
     "latitude": 54.213,
     "longitude": 19.123,
   },
+  "distance": "10 m",
+  "duration": "1 mins",
   "error": "",
   "isFetching": false,
   "origin": Object {
@@ -83,20 +87,6 @@ Array [
     "type": "REQUEST_WALKING_DIRECTIONS",
   },
   Object {
-    "coords": Array [
-      Object {
-        "latitude": 38.5,
-        "longitude": -120.2,
-      },
-      Object {
-        "latitude": 40.7,
-        "longitude": -120.95,
-      },
-      Object {
-        "latitude": 43.252,
-        "longitude": -126.453,
-      },
-    ],
     "destination": Object {
       "latitude": 54.213,
       "longitude": 19.123,
@@ -104,6 +94,24 @@ Array [
     "origin": Object {
       "latitude": 53.213,
       "longitude": 69.123,
+    },
+    "route": Object {
+      "coords": Array [
+        Object {
+          "latitude": 38.5,
+          "longitude": -120.2,
+        },
+        Object {
+          "latitude": 40.7,
+          "longitude": -120.95,
+        },
+        Object {
+          "latitude": 43.252,
+          "longitude": -126.453,
+        },
+      ],
+      "distance": "200 m",
+      "duration": "2 mins",
     },
     "type": "RECEIVE_WALKING_DIRECTIONS",
   },
@@ -117,6 +125,8 @@ Object {
     "latitude": 54.213,
     "longitude": 19.123,
   },
+  "distance": "",
+  "duration": "",
   "error": "",
   "isFetching": true,
   "origin": Object {
