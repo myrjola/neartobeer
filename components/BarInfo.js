@@ -6,10 +6,11 @@ import { chooseBeerIcon } from './BarMarker';
 const { height, width } = Dimensions.get('window');
 
 const borderColor = '#bbb';
+const backgroundColor = '#F1EDEA';
 
 const viewCommon = {
   position: 'absolute',
-  backgroundColor: '#F1EDEA',
+  backgroundColor,
   width,
   height,
 };
@@ -24,12 +25,18 @@ const styles = StyleSheet.create({
   compactView: {
     ...viewCommon,
     top: height * (3.0 / 4.0),
-    borderTopColor: borderColor,
-    borderTopWidth: StyleSheet.hairlineWidth,
+    backgroundColor: 'transparent',
   },
   expandedView: {
     ...viewCommon,
     ...StyleSheet.absoluteFillObject,
+  },
+  contentView: {
+    top: badgeSize / 2,
+    flex: 1,
+    backgroundColor,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderColor,
   },
   title: {
     fontWeight: 'bold',
@@ -39,15 +46,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'transparent',
   },
-  priceBadgeBorder: {
+  priceBadgeView: {
     position: 'absolute',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor,
     left: width * (3 / 4),
-    top: -badgeSize / 2,
     width: badgeSize,
     height: badgeSize,
     borderRadius: badgeSize / 2,
+    elevation: 2,
+    shadowOpacity: 0.5,
+    shadowRadius: 1,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
   },
   priceBadge: {
     width: badgeSize,
@@ -56,10 +67,14 @@ const styles = StyleSheet.create({
 });
 
 const BarInfo = ({ bar }) => (
-  <View style={bar ? styles.compactView : styles.hiddenView} accessibilityLabel="Bar information">
+  <View
+    style={bar ? styles.compactView : styles.hiddenView}
+    accessibilityLabel="Bar information"
+    pointerEvents="box-none"
+  >
     {
       bar &&
-        <View style={StyleSheet.absoluteFillObject}>
+        <View style={styles.contentView}>
           <Text style={styles.title}>
             { bar.post_title }
           </Text>
@@ -67,10 +82,12 @@ const BarInfo = ({ bar }) => (
             {bar.post_address}{'\n'}
           </Text>
           <WebView source={{ html: bar.post_content }} style={styles.barDescription} scrollEnabled={false} />
-          <View style={styles.priceBadgeBorder}>
-            <Image source={chooseBeerIcon(bar.post_category)} style={styles.priceBadge} />
-          </View>
         </View>
+    }
+    { bar &&
+      <View style={styles.priceBadgeView}>
+        <Image source={chooseBeerIcon(bar.post_category)} style={styles.priceBadge} />
+      </View>
     }
   </View>
 );
