@@ -1,3 +1,5 @@
+import { REHYDRATE } from 'redux-persist/constants';
+
 import { REQUEST_WALKING_DIRECTIONS, RECEIVE_WALKING_DIRECTIONS, ERROR_WALKING_DIRECTIONS,
          coordinatesMatch } from '../actions/walkingDirections';
 
@@ -40,6 +42,11 @@ function walkingDirections(state = initialState, action) {
         lastUpdated: action.receivedAt,
         error: action.error,
       });
+    case REHYDRATE:
+      return {
+        ...state,
+        isFetching: false,
+      };
     default:
       return state;
   }

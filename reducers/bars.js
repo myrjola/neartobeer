@@ -1,3 +1,5 @@
+import { REHYDRATE } from 'redux-persist/constants';
+
 import { REQUEST_BARS, RECEIVE_BARS, INVALIDATE_BARS, ERROR_BARS, SELECT_BAR, DESELECT_BAR } from '../actions/bars.js';
 
 export const initialState = {
@@ -39,6 +41,11 @@ function bars(state = initialState, action) {
       return {
         ...state,
         selectedBarId: null,
+      };
+    case REHYDRATE:
+      return {
+        ...state,
+        isFetching: false,
       };
     default:
       return state;
