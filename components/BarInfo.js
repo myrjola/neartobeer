@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Dimensions, Image, StyleSheet, Text, View, WebView } from 'react-native';
+import { Animated, Dimensions, Image, StyleSheet, Text, View, WebView } from 'react-native';
 
 import { chooseBeerIcon } from './BarMarker';
 
@@ -8,28 +8,16 @@ const { height, width } = Dimensions.get('window');
 const borderColor = '#bbb';
 const backgroundColor = '#F1EDEA';
 
-const viewCommon = {
-  position: 'absolute',
-  backgroundColor,
-  width,
-  height,
-};
-
 const badgeSize = height / 10;
+const badgeXPosition = width * (3 / 4);
 
 const styles = StyleSheet.create({
-  hiddenView: {
-    ...viewCommon,
-    top: height,
-  },
-  compactView: {
-    ...viewCommon,
-    top: height * (3.0 / 4.0),
+  barInfo: {
+    position: 'absolute',
     backgroundColor: 'transparent',
-  },
-  expandedView: {
-    ...viewCommon,
-    ...StyleSheet.absoluteFillObject,
+    width,
+    height,
+    top: height,
   },
   contentView: {
     top: badgeSize / 2,
@@ -41,6 +29,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 16,
+    width: badgeXPosition,
   },
   barDescription: {
     flex: 1,
@@ -48,7 +37,7 @@ const styles = StyleSheet.create({
   },
   priceBadgeView: {
     position: 'absolute',
-    left: width * (3 / 4),
+    left: badgeXPosition,
     width: badgeSize,
     height: badgeSize,
     borderRadius: badgeSize / 2,
@@ -66,44 +55,108 @@ const styles = StyleSheet.create({
   },
 });
 
-const BarInfo = ({ bar, walkingDuration, walkingDistance }) => (
-  <View
-    style={bar ? styles.compactView : styles.hiddenView}
-    accessibilityLabel="Bar information"
-    pointerEvents="box-none"
-  >
-    {
-      bar &&
-        <View style={styles.contentView}>
-          <Text style={styles.title}>
-            { bar.post_title }
-          </Text>
-          <Text>
-            {bar.post_address}{'\n'}
-            {walkingDuration} ({walkingDistance}) walk{'\n'}
-          </Text>
-          <WebView source={{ html: bar.post_content }} style={styles.barDescription} scrollEnabled={false} />
-        </View>
-    }
-    { bar &&
-      <View style={styles.priceBadgeView}>
-        <Image source={chooseBeerIcon(bar.post_category)} style={styles.priceBadge} />
-      </View>
-    }
+const BarInfoText = ({ bar, walkingDuration, walkingDistance }) => (
+  <View style={styles.contentView}>
+    <Text style={styles.title}>
+      { bar.post_title }
+    </Text>
+    <Text>
+      {bar.post_address}{'\n'}
+      {walkingDuration} ({walkingDistance}) walk{'\n'}
+    </Text>
+    <WebView source={{ html: bar.post_content }} style={styles.barDescription} scrollEnabled={false} />
   </View>
 );
 
-BarInfo.defaultProps = {
-  bar: null,
-};
+const BarPriceBadge = ({ bar }) => (
+  <View style={styles.priceBadgeView}>
+    <Image source={chooseBeerIcon(bar.post_category)} style={styles.priceBadge} />
+  </View>
+);
 
-BarInfo.propTypes = {
+class BarInfo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+      yPosition: new Animated.Value(0),
+      props: {
+        walkingDistance: '',
+        walkingDuration: '',
+        // We have to store the props so that we get a sane slideout animation.
+        ...props,
+        // Bar may be null, so let's provide a default.
+        bar: {
+          post_title: '',
+          post_content: '',
+          post_category: '',
+          post_address: '',
+          ...props.bar,
+        },
+      },
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const barIsSelected = nextProps.bar;
+    if (barIsSelected) {
+      this.state.props = nextProps;
+    }
+    this.animateBarInfoView(nextProps.bar ? -height * (1.0 / 4.0) : 0);
+  }
+
+  animateBarInfoView(toYPosition) {
+    Animated.spring(
+      this.state.yPosition,
+      {
+        toValue: toYPosition,
+        useNativeDriver: true,
+      },
+    ).start();
+  }
+
+  render() {
+    const bar = this.state.props.bar;
+    const walkingDuration = this.state.props.walkingDuration;
+    const walkingDistance = this.state.props.walkingDistance;
+    return (
+      <Animated.View
+        style={[
+          styles.barInfo,
+          {
+            transform: [{ translateY: this.state.yPosition }],
+          },
+        ]}
+        accessibilityLabel="Bar information"
+        pointerEvents="box-none"
+      >
+        <BarInfoText bar={bar} walkingDistance={walkingDistance} walkingDuration={walkingDuration} />
+        <BarPriceBadge bar={bar} />
+      </Animated.View>
+    );
+  }
+}
+
+const propTypes = {
   bar: PropTypes.shape({
     post_title: PropTypes.string.isRequired,
+    post_content: PropTypes.string.isRequired,
+    post_address: PropTypes.string.isRequired,
+    post_category: PropTypes.string.isRequired,
   }),
   walkingDuration: PropTypes.string.isRequired,
   walkingDistance: PropTypes.string.isRequired,
 };
+
+const defaultProps = {
+  bar: null,
+};
+
+BarInfo.propTypes = propTypes;
+BarInfo.defaultProps = defaultProps;
+BarInfoText.propTypes = BarInfo.propTypes;
+BarInfoText.defaultProps = BarInfo.defaultProps;
+BarPriceBadge.propTypes = { bar: BarInfo.propTypes.bar };
 
 export default BarInfo;
 
