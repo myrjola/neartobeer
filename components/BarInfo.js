@@ -6,15 +6,18 @@ import { borderColor, backgroundColor } from '../constants';
 
 const { height, width } = Dimensions.get('window');
 
-const badgeSize = height / 10;
+const badgeSize = height / 11;
 const badgeXPosition = width * (3 / 4);
+
+// We have an invisible view half of badgeSize before the content starts.
+const barInfoTopWithBadge = -height - (badgeSize / 2);
 
 const styles = StyleSheet.create({
   barInfo: {
     position: 'absolute',
     backgroundColor: 'transparent',
     width,
-    height,
+    height: height * 2,
     top: height,
   },
   contentView: {
@@ -75,8 +78,6 @@ class BarInfo extends React.Component {
     const yPosition = new Animated.Value(0);
     yPosition.addListener(({ value }) => (this._yPosition = value));
 
-    this._expanded = false;
-
     this.state = {
       yPosition,
       props: {
@@ -122,8 +123,7 @@ class BarInfo extends React.Component {
   }
 
   _expandBarInfoView() {
-    this._expanded = true;
-    this._animateBarInfoView(-height - (badgeSize / 2));
+    this._animateBarInfoView(barInfoTopWithBadge);
   }
 
   _animateBarInfoView(toYPosition) {
@@ -181,13 +181,29 @@ class BarInfo extends React.Component {
           </Text>
           <Text>
             {bar.post_address}{'\n'}
-            {walkingDuration} ({walkingDistance}) walk{'\n'}
+            {walkingDuration} ({walkingDistance}) walk
           </Text>
           <WebView source={{ html: bar.post_content }} style={styles.barDescription} scrollEnabled={false} />
         </View>
-        <View style={styles.priceBadgeView} {...this._panResponder.panHandlers}>
-          <Image source={chooseBeerIcon(bar.post_category)} style={styles.priceBadge} />
-        </View>
+        <Animated.View
+          style={[
+            styles.priceBadgeView,
+            {
+              transform: [{
+                translateY: this.state.yPosition.interpolate({
+                  inputRange: [barInfoTopWithBadge, -height, 0],
+                  outputRange: [badgeSize / 2, 0, 0],
+                }),
+              }],
+            },
+          ]}
+          {...this._panResponder.panHandlers}
+        >
+          <Image
+            source={chooseBeerIcon(bar.post_category)}
+            style={styles.priceBadge}
+          />
+        </Animated.View>
       </Animated.View>
     );
   }
