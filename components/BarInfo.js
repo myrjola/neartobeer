@@ -53,31 +53,29 @@ const styles = StyleSheet.create({
   },
 });
 
-const BarInfoText = ({ bar, walkingDuration, walkingDistance, panResponder }) => (
-  <View style={styles.contentView} {...panResponder.panHandlers}>
-    <Text style={styles.title}>
-      { bar.post_title }
-    </Text>
-    <Text>
-      {bar.post_address}{'\n'}
-      {walkingDuration} ({walkingDistance}) walk{'\n'}
-    </Text>
-    <WebView source={{ html: bar.post_content }} style={styles.barDescription} scrollEnabled={false} />
-  </View>
-);
-
-const BarPriceBadge = ({ bar }) => (
-  <View style={styles.priceBadgeView}>
-    <Image source={chooseBeerIcon(bar.post_category)} style={styles.priceBadge} />
-  </View>
-);
-
 class BarInfo extends React.Component {
+  static propTypes = {
+    bar: PropTypes.shape({
+      post_title: PropTypes.string.isRequired,
+      post_content: PropTypes.string.isRequired,
+      post_address: PropTypes.string.isRequired,
+      post_category: PropTypes.string.isRequired,
+    }),
+    walkingDuration: PropTypes.string.isRequired,
+    walkingDistance: PropTypes.string.isRequired,
+  };
+
+  static defaultProps = {
+    bar: null,
+  };
+
   constructor(props) {
     super(props);
 
     const yPosition = new Animated.Value(0);
     yPosition.addListener(({ value }) => (this._yPosition = value));
+
+    this._expanded = false;
 
     this.state = {
       yPosition,
@@ -96,14 +94,16 @@ class BarInfo extends React.Component {
         },
       },
     };
+  }
 
+  componentWillMount() {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: this._handleStartShouldSetPanResponder,
       onMoveShouldSetPanResponder: this._handleMoveShouldSetPanResponder,
-      onPanResponderGrant: this._handlePanResponderGrant.bind(this),
-      onPanResponderMove: this._handlePanResponderMove.bind(this),
-      onPanResponderRelease: this._handlePanResponderEnd.bind(this),
-      onPanResponderTerminate: this._handlePanResponderEnd.bind(this),
+      onPanResponderGrant: this._handlePanResponderGrant,
+      onPanResponderMove: this._handlePanResponderMove,
+      onPanResponderRelease: this._handlePanResponderEnd,
+      onPanResponderTerminate: this._handlePanResponderEnd,
     });
   }
 
@@ -112,10 +112,21 @@ class BarInfo extends React.Component {
     if (barIsSelected) {
       this.state.props = nextProps;
     }
-    this.animateBarInfoView(nextProps.bar ? -height * (1.0 / 4.0) : 0);
+    this._compactOrHiddenBarInfoView(nextProps.bar);
   }
 
-  animateBarInfoView(toYPosition) {
+  _compactOrHiddenBarInfoView(bar) {
+    const hiddenYPosition = 0;
+    const compactYPosition = -height * (1.0 / 6.0);
+    this._animateBarInfoView(bar ? compactYPosition : hiddenYPosition);
+  }
+
+  _expandBarInfoView() {
+    this._expanded = true;
+    this._animateBarInfoView(-height - (badgeSize / 2));
+  }
+
+  _animateBarInfoView(toYPosition) {
     Animated.spring(
       this.state.yPosition,
       {
@@ -126,26 +137,28 @@ class BarInfo extends React.Component {
   }
 
   _handleStartShouldSetPanResponder(): boolean {
-    // Should we become active when the user presses down on the circle?
     return true;
   }
 
   _handleMoveShouldSetPanResponder(): boolean {
-    // Should we become active when the user moves a touch over the circle?
     return true;
   }
 
-  _handlePanResponderGrant() {
+  _handlePanResponderGrant = () => {
     this._dragStartYPosition = this._yPosition;
-  }
+  };
 
-  _handlePanResponderMove(e: Object, gestureState: Object) {
+  _handlePanResponderMove = (e: Object, gestureState: Object) => {
     this.state.yPosition.setValue(this._dragStartYPosition + gestureState.dy);
-  }
+  };
 
-  _handlePanResponderEnd(e: Object, gestureState: Object) {
-    this.state.yPosition.setValue(this._dragStartYPosition + gestureState.dy);
-  }
+  _handlePanResponderEnd = (e: Object, gestureState: Object) => {
+    if (gestureState.dy < 1) {
+      this._expandBarInfoView();
+    } else {
+      this._compactOrHiddenBarInfoView(this.state.props.bar);
+    }
+  };
 
   render() {
     const bar = this.state.props.bar;
@@ -162,38 +175,23 @@ class BarInfo extends React.Component {
         accessibilityLabel="Bar information"
         pointerEvents="box-none"
       >
-        <BarInfoText
-          bar={bar}
-          walkingDistance={walkingDistance}
-          walkingDuration={walkingDuration}
-          panResponder={this._panResponder}
-        />
-        <BarPriceBadge bar={bar} />
+        <View style={styles.contentView} {...this._panResponder.panHandlers}>
+          <Text style={styles.title}>
+            { bar.post_title }
+          </Text>
+          <Text>
+            {bar.post_address}{'\n'}
+            {walkingDuration} ({walkingDistance}) walk{'\n'}
+          </Text>
+          <WebView source={{ html: bar.post_content }} style={styles.barDescription} scrollEnabled={false} />
+        </View>
+        <View style={styles.priceBadgeView} {...this._panResponder.panHandlers}>
+          <Image source={chooseBeerIcon(bar.post_category)} style={styles.priceBadge} />
+        </View>
       </Animated.View>
     );
   }
 }
-
-const propTypes = {
-  bar: PropTypes.shape({
-    post_title: PropTypes.string.isRequired,
-    post_content: PropTypes.string.isRequired,
-    post_address: PropTypes.string.isRequired,
-    post_category: PropTypes.string.isRequired,
-  }),
-  walkingDuration: PropTypes.string.isRequired,
-  walkingDistance: PropTypes.string.isRequired,
-};
-
-const defaultProps = {
-  bar: null,
-};
-
-BarInfo.propTypes = propTypes;
-BarInfo.defaultProps = defaultProps;
-BarInfoText.propTypes = BarInfo.propTypes;
-BarInfoText.defaultProps = BarInfo.defaultProps;
-BarPriceBadge.propTypes = { bar: BarInfo.propTypes.bar };
 
 export default BarInfo;
 
