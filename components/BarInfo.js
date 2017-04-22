@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Animated, Dimensions, Image, StyleSheet, Text, View, WebView } from 'react-native';
+import { Animated, Dimensions, Image, PanResponder, StyleSheet, Text, View, WebView } from 'react-native';
 
 import { chooseBeerIcon } from './BarMarker';
 
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const BarInfoText = ({ bar, walkingDuration, walkingDistance }) => (
-  <View style={styles.contentView}>
+const BarInfoText = ({ bar, walkingDuration, walkingDistance, panResponder }) => (
+  <View style={styles.contentView} {...panResponder.panHandlers}>
     <Text style={styles.title}>
       { bar.post_title }
     </Text>
@@ -77,9 +77,12 @@ const BarPriceBadge = ({ bar }) => (
 class BarInfo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
 
-      yPosition: new Animated.Value(0),
+    const yPosition = new Animated.Value(0);
+    yPosition.addListener(({ value }) => (this._yPosition = value));
+
+    this.state = {
+      yPosition,
       props: {
         walkingDistance: '',
         walkingDuration: '',
@@ -95,6 +98,15 @@ class BarInfo extends React.Component {
         },
       },
     };
+
+    this._panResponder = PanResponder.create({
+      onStartShouldSetPanResponder: this._handleStartShouldSetPanResponder,
+      onMoveShouldSetPanResponder: this._handleMoveShouldSetPanResponder,
+      onPanResponderGrant: this._handlePanResponderGrant.bind(this),
+      onPanResponderMove: this._handlePanResponderMove.bind(this),
+      onPanResponderRelease: this._handlePanResponderEnd.bind(this),
+      onPanResponderTerminate: this._handlePanResponderEnd.bind(this),
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -115,6 +127,28 @@ class BarInfo extends React.Component {
     ).start();
   }
 
+  _handleStartShouldSetPanResponder(): boolean {
+    // Should we become active when the user presses down on the circle?
+    return true;
+  }
+
+  _handleMoveShouldSetPanResponder(): boolean {
+    // Should we become active when the user moves a touch over the circle?
+    return true;
+  }
+
+  _handlePanResponderGrant() {
+    this._dragStartYPosition = this._yPosition;
+  }
+
+  _handlePanResponderMove(e: Object, gestureState: Object) {
+    this.state.yPosition.setValue(this._dragStartYPosition + gestureState.dy);
+  }
+
+  _handlePanResponderEnd(e: Object, gestureState: Object) {
+    this.state.yPosition.setValue(this._dragStartYPosition + gestureState.dy);
+  }
+
   render() {
     const bar = this.state.props.bar;
     const walkingDuration = this.state.props.walkingDuration;
@@ -130,7 +164,12 @@ class BarInfo extends React.Component {
         accessibilityLabel="Bar information"
         pointerEvents="box-none"
       >
-        <BarInfoText bar={bar} walkingDistance={walkingDistance} walkingDuration={walkingDuration} />
+        <BarInfoText
+          bar={bar}
+          walkingDistance={walkingDistance}
+          walkingDuration={walkingDuration}
+          panResponder={this._panResponder}
+        />
         <BarPriceBadge bar={bar} />
       </Animated.View>
     );
