@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
 class BarInfo extends React.Component {
   static propTypes = {
     bar: PropTypes.shape({
+      post_id: PropTypes.number.isRequired,
       post_title: PropTypes.string.isRequired,
       post_content: PropTypes.string.isRequired,
       post_address: PropTypes.string.isRequired,
@@ -75,11 +76,11 @@ class BarInfo extends React.Component {
   constructor(props) {
     super(props);
 
-    const yPosition = new Animated.Value(0);
-    yPosition.addListener(({ value }) => (this._yPosition = value));
+    this._switchingToBar = null;
+
+    this._yPosition = new Animated.Value(0);
 
     this.state = {
-      yPosition,
       props: {
         walkingDistance: '',
         walkingDuration: '',
@@ -109,11 +110,7 @@ class BarInfo extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const barIsSelected = nextProps.bar;
-    if (barIsSelected) {
-      this.state.props = nextProps;
-    }
-    this._compactOrHiddenBarInfoView(nextProps.bar);
+    this._switchBar(nextProps);
   }
 
   _compactOrHiddenBarInfoView(bar) {
@@ -126,14 +123,34 @@ class BarInfo extends React.Component {
     this._animateBarInfoView(barInfoTopWithBadge);
   }
 
-  _animateBarInfoView(toYPosition) {
+  _animateBarInfoView(toYPosition, callback) {
     Animated.spring(
-      this.state.yPosition,
+      this._yPosition,
       {
         toValue: toYPosition,
-        useNativeDriver: true,
       },
-    ).start();
+    ).start(callback);
+  }
+
+  // Hide current bar information and expand the new one.
+  _switchBar(nextProps) {
+    const bar = nextProps.bar;
+    const barId = bar && bar.post_id;
+    if (this._switchingToBar !== barId || !bar) {
+      this._switchingToBar = barId;
+      Animated.timing(
+        this._yPosition,
+        {
+          toValue: 0,
+          duration: 200,
+        },
+      ).start(
+        () => {
+          if (bar) this.setState({ ...this.state, props: nextProps });
+          this._switchingToBar = null;
+          this._compactOrHiddenBarInfoView(bar);
+        });
+    }
   }
 
   _handleStartShouldSetPanResponder(): boolean {
@@ -145,11 +162,11 @@ class BarInfo extends React.Component {
   }
 
   _handlePanResponderGrant = () => {
-    this._dragStartYPosition = this._yPosition;
+    this._yPosition.stopAnimation(position => (this._dragStartYPosition = position));
   };
 
   _handlePanResponderMove = (e: Object, gestureState: Object) => {
-    this.state.yPosition.setValue(this._dragStartYPosition + gestureState.dy);
+    this._yPosition.setValue(this._dragStartYPosition + gestureState.dy);
   };
 
   _handlePanResponderEnd = (e: Object, gestureState: Object) => {
@@ -169,7 +186,7 @@ class BarInfo extends React.Component {
         style={[
           styles.barInfo,
           {
-            transform: [{ translateY: this.state.yPosition }],
+            transform: [{ translateY: this._yPosition }],
           },
         ]}
         accessibilityLabel="Bar information"
@@ -190,7 +207,7 @@ class BarInfo extends React.Component {
             styles.priceBadgeView,
             {
               transform: [{
-                translateY: this.state.yPosition.interpolate({
+                translateY: this._yPosition.interpolate({
                   inputRange: [barInfoTopWithBadge, -height, 0],
                   outputRange: [badgeSize / 2, 0, 0],
                 }),
