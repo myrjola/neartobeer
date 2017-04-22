@@ -2,11 +2,9 @@ import React, { PropTypes } from 'react';
 import { Animated, Dimensions, Image, PanResponder, StyleSheet, Text, View, WebView } from 'react-native';
 
 import { chooseBeerIcon } from './BarMarker';
+import { borderColor, backgroundColor } from '../constants';
 
 const { height, width } = Dimensions.get('window');
-
-const borderColor = '#bbb';
-const backgroundColor = '#F1EDEA';
 
 const badgeSize = height / 10;
 const badgeXPosition = width * (3 / 4);
