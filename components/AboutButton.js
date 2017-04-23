@@ -1,13 +1,22 @@
 import React from 'react';
-import { Text, TouchableHighlight, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+
+const styles = StyleSheet.create({
+  aboutIcon: {
+    marginRight: 0,
+  },
+});
 
 const AboutButton = () => (
-  <TouchableHighlight onPress={Actions.aboutView}>
-    <View accessibilityLabel="About button">
-      <Text>About</Text>
-    </View>
-  </TouchableHighlight>
+  <Icon.Button
+    name="md-beer"
+    size={26}
+    iconStyle={styles.aboutIcon}
+    onPress={Actions.aboutView}
+    accessibilityLabel="About button"
+  />
 );
 
 export default AboutButton;
