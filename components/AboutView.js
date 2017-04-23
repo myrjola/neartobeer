@@ -22,7 +22,7 @@ const AboutView = () => (
   <View style={styles.appView} accessibilityLabel="About the service">
     <View style={styles.text}>
       <Text style={styles.title}>
-        Beeriffic
+        Neartobeer
       </Text>
       <Text style={styles.subtitle}>
         Your best bet to get a cheap beer nearby
