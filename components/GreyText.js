@@ -1,14 +1,19 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text } from 'react-native';
 
+const color = 'black';
+
 const styles = StyleSheet.create({
   primary: {
+    color,
     opacity: 0.87,
   },
   secondary: {
+    color,
     opacity: 0.54,
   },
   disabled: {
+    color,
     opacity: 0.38,
   },
 });
