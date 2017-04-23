@@ -10,13 +10,14 @@
     "test:integration": "mocha `find test -name '*spec.js'`"
   },
   "dependencies": {
+    "appium": "^1.6.4",
     "asset-require-hook": "^1.0.2",
     "babel-plugin-module-resolver": "^1.6.0",
     "caching-transform": "^1.0.1",
     "google-polyline": "^1.0.0",
     "react": "16.0.0-alpha.6",
     "react-native": "^0.43.3",
-    "react-native-maps": "^0.14.0",
+    "react-native-maps": "^0.13.1",
     "react-native-radio-buttons": "^0.14.0",
     "react-native-router-flux": "^3.38.0",
     "react-native-vector-icons": "^4.0.1",

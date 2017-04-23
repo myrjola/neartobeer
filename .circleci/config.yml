@@ -2,20 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: myrjola/react-native-android-appium:v0.3
+      - image: myrjola/react-native-android-appium:v0.5
     working_directory: "/root/beersunderx"
     environment:
       QEMU_AUDIO_DRV: none
       LC_ALL: "C.UTF-8"
     steps:
-      - run:
-          name: Start emulator, it takes long to start
-          command: |
-            /opt/android/emulator/emulator \
-              -avd testAVD \
-              -no-audio \
-              -no-window
-          background: true
       - checkout
       - restore_cache:
           key: beersunderx-node-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
@@ -57,10 +49,27 @@ jobs:
       - restore_cache:
           key: beersunderx-gradle-{{ .Branch }}-{{ checksum "android/app/build.gradle" }}
       - run:
-          name: Assemble APKs
-          command: cd android && ./gradlew assemble
+          name: Bundle assets manually to save memory
+          command: |
+            stty rows 50 cols 80
+            react-native bundle --platform android --dev false \
+              --entry-file index.android.js \
+              --bundle-output android/app/build/intermediates/assets/release/index.android.bundle \
+              --assets-dest android/app/build/intermediates/res/merged/release/ \
+              --verbose
+      - run:
+          name: Assemble release APK
+          command: cd android && ./gradlew assembleRelease --info -x bundleReleaseJsAndAssets
           environment:
             TERM: dumb
+      - run:
+          name: Start emulator, it takes long to start
+          command: |
+            /opt/android/emulator/emulator \
+              -avd testAVD \
+              -no-audio \
+              -no-window
+          background: true
       - save_cache:
           key: beersunderx-gradle-{{ .Branch }}-{{ checksum "android/app/build.gradle" }}
           paths:
@@ -71,13 +80,14 @@ jobs:
           name: Check that emulator is ready
           command: source scripts/funcs.bash && waitForAVD
       - run:
+          name: Integration tests
+          command: source scripts/funcs.bash && retry3 npm run test:integration
+          no_output_timeout: 30m
+      - run:
           name: Take screenshot
           command: |
             adb shell screencap -p | \
               perl -pe 's/\x0D\x0A/\x0A/g' > \
                 artifacts/screen-$(date -I).png
-      - run:
-          name: Integration tests
-          command: npm run test:integration
       - store_artifacts:
           path: artifacts

@@ -59,7 +59,7 @@ function createWebDriver() {
 
   driver = driver.init(IS_TRAVIS ? WEBDRIVER_CAPS_IOS : WEBDRIVER_CAPS_ANDROID);
 
-  return driver.setImplicitWaitTimeout(30000);
+  return driver.setImplicitWaitTimeout(1200000);
 }
 
 export function createDriver() {
