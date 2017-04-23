@@ -43,15 +43,12 @@ const MainView = () => (
 
 const BeersUnderX = () => (
   <Provider store={store}>
-
-
     <Router>
       <Scene key="root" hideNavBar={true}>
         <Scene key="mainView" component={MainView} initial={true} />
         <Scene key="aboutView" title="About us" hideNavBar={false} component={AboutView} />
       </Scene>
     </Router>
-
   </Provider>
 );
 
