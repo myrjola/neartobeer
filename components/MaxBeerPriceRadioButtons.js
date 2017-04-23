@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { RadioButtons } from 'react-native-radio-buttons';
 
+import GreyText from './GreyText';
 import { BEER_UNDER_30, BEER_UNDER_40, BEER_UNDER_50 } from '../reducers/maxBeerPriceCategory';
 
 const styles = StyleSheet.create({
@@ -39,7 +40,7 @@ const MaxBeerPriceOption = (option, selected, onSelect, index) => (
     <View
       style={getOptionStyle(option, selected)}
     >
-      <Text>{extractNumber(option)}kr</Text>
+      <GreyText>{extractNumber(option)}kr</GreyText>
     </View>
   </TouchableWithoutFeedback>
 );
