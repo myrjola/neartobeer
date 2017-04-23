@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
-import { Animated, Dimensions, Image, PanResponder, StyleSheet, Text, View, WebView } from 'react-native';
+import { Animated, Dimensions, Image, PanResponder, StyleSheet, View, WebView } from 'react-native';
 
+import GreyText from './GreyText';
 import { chooseBeerIcon } from './BarMarker';
 import { borderColor, backgroundColor } from '../constants';
 
@@ -81,19 +82,12 @@ class BarInfo extends React.Component {
     this._yPosition = new Animated.Value(0);
 
     this.state = {
-      props: {
-        walkingDistance: '',
-        walkingDuration: '',
-        // We have to store the props so that we get a sane slideout animation.
-        ...props,
-        // Bar may be null, so let's provide a default.
-        bar: {
-          post_title: '',
-          post_content: '',
-          post_category: '',
-          post_address: '',
-          ...props.bar,
-        },
+      bar: {
+        post_title: '',
+        post_content: '',
+        post_category: '',
+        post_address: '',
+        ...props.bar,
       },
     };
   }
@@ -146,8 +140,7 @@ class BarInfo extends React.Component {
         },
       ).start(
         () => {
-          if (bar) this.setState({ ...this.state, props: nextProps });
-          this._switchingToBar = null;
+          if (bar) this.setState({ ...this.state, bar });
           this._compactOrHiddenBarInfoView(bar);
         });
     }
@@ -173,14 +166,14 @@ class BarInfo extends React.Component {
     if (gestureState.dy < 1) {
       this._expandBarInfoView();
     } else {
-      this._compactOrHiddenBarInfoView(this.state.props.bar);
+      this._compactOrHiddenBarInfoView(this.state.bar);
     }
   };
 
   render() {
-    const bar = this.state.props.bar;
-    const walkingDuration = this.state.props.walkingDuration;
-    const walkingDistance = this.state.props.walkingDistance;
+    const bar = this.state.bar;
+    const walkingDuration = this.props.walkingDuration;
+    const walkingDistance = this.props.walkingDistance;
     return (
       <Animated.View
         style={[
@@ -193,13 +186,13 @@ class BarInfo extends React.Component {
         pointerEvents="box-none"
       >
         <View style={styles.contentView} {...this._panResponder.panHandlers}>
-          <Text style={styles.title}>
+          <GreyText style={styles.title}>
             { bar.post_title }
-          </Text>
-          <Text>
+          </GreyText>
+          <GreyText textType="secondary">
             {bar.post_address}{'\n'}
             {walkingDuration} ({walkingDistance}) walk
-          </Text>
+          </GreyText>
           <WebView source={{ html: bar.post_content }} style={styles.barDescription} scrollEnabled={false} />
         </View>
         <Animated.View
