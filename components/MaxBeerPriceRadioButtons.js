@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
+  optionText: {
+    fontSize: 18,
+  },
 });
 
 const extractNumber = string => string.match(/\d+/)[0];
@@ -40,7 +43,7 @@ const MaxBeerPriceOption = (option, selected, onSelect, index) => (
     <View
       style={getOptionStyle(option, selected)}
     >
-      <GreyText>{extractNumber(option)}kr</GreyText>
+      <GreyText style={styles.optionText}>{extractNumber(option)}kr</GreyText>
     </View>
   </TouchableWithoutFeedback>
 );

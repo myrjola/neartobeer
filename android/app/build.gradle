@@ -82,6 +82,20 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+subprojects{
+    afterEvaluate {
+        android {
+            compileSdkVersion 25
+            buildToolsVersion "25.0.0"
+
+            defaultConfig {
+                minSdkVersion 16
+                targetSdkVersion 22
+            }
+        }
+    }
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion '25.0.0'
@@ -152,6 +166,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-vector-icons')
     compile project(':react-native-maps')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"

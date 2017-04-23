@@ -10,7 +10,7 @@ import FilteredBarMap from './containers/FilteredBarMap';
 import MaxBeerPriceSelector from './containers/MaxBeerPriceSelector';
 import BarInfoContainer from './containers/BarInfoContainer';
 import ZoomToUserLocationButton from './components/ZoomToUserLocationButton';
-import { backgroundColor, borderColor } from './constants';
+import { backgroundColor, borderColor, navBarHeight } from './constants';
 
 const store = configureStore();
 
@@ -20,9 +20,11 @@ const styles = StyleSheet.create({
   },
   buttonRow: {
     padding: 10,
+    height: navBarHeight,
     backgroundColor,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     borderBottomColor: borderColor,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },

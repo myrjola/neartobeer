@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, TouchableHighlight } from 'react-native';
+import { StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const boxAroundCoordinates = (position) => {
   const coordinates = position.coords;
@@ -19,10 +20,14 @@ const zoomToUserLocation = () => navigator.geolocation.getCurrentPosition(
   position => this.map.fitToCoordinates(boxAroundCoordinates(position), { animated: true }),
 );
 
+const styles = StyleSheet.create({
+  gpsIcon: {
+    marginRight: 0,
+  },
+});
+
 const ZoomToUserLocationButton = () => (
-  <TouchableHighlight onPress={zoomToUserLocation}>
-    <Text>Zoom</Text>
-  </TouchableHighlight>
+  <Icon.Button name="gps-fixed" size={26} iconStyle={styles.gpsIcon} onPress={zoomToUserLocation} />
 );
 
 export default ZoomToUserLocationButton;
