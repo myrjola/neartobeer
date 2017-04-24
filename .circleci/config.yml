@@ -62,32 +62,11 @@ jobs:
           command: cd android && ./gradlew assembleRelease --info -x bundleReleaseJsAndAssets
           environment:
             TERM: dumb
-      - run:
-          name: Start emulator, it takes long to start
-          command: |
-            /opt/android/emulator/emulator \
-              -avd testAVD \
-              -no-audio \
-              -no-window
-          background: true
       - save_cache:
           key: beersunderx-gradle-{{ .Branch }}-{{ checksum "android/app/build.gradle" }}
           paths:
             - ~/.gradle
             - android/build
             - android/app/build
-      - run:
-          name: Check that emulator is ready
-          command: source scripts/funcs.bash && waitForAVD
-      - run:
-          name: Integration tests
-          command: source scripts/funcs.bash && retry3 npm run test:integration
-          no_output_timeout: 30m
-      - run:
-          name: Take screenshot
-          command: |
-            adb shell screencap -p | \
-              perl -pe 's/\x0D\x0A/\x0A/g' > \
-                artifacts/screen-$(date -I).png
       - store_artifacts:
           path: artifacts
