@@ -101,6 +101,7 @@ class BarInfo extends React.Component {
       onPanResponderRelease: this._handlePanResponderEnd,
       onPanResponderTerminate: this._handlePanResponderEnd,
     });
+    this._switchBar(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
