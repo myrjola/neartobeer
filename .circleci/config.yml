@@ -49,6 +49,11 @@ jobs:
       - restore_cache:
           key: beersunderx-gradle-{{ .Branch }}-{{ checksum "android/app/build.gradle" }}
       - run:
+          name: Create the missing directories for the bundler
+          command: |
+            mkdir -p android/app/build/intermediates/assets/release/ \
+              android/app/build/intermediates/res/merged/release/
+      - run:
           name: Bundle assets manually to save memory
           command: |
             stty rows 50 cols 80
