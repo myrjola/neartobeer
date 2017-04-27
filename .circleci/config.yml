@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: myrjola/react-native-android-appium:v0.5
+      - image: myrjola/react-native-android-appium:v0.7
     working_directory: "/root/neartobeer"
     environment:
       QEMU_AUDIO_DRV: none
