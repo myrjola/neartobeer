@@ -53,3 +53,4 @@ fastlane/Preview.html
 fastlane/screenshots
 .jest-cache
 test_cache
+.test_cache

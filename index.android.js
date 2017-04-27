@@ -1,7 +1,7 @@
 import { AppRegistry } from 'react-native';
-import BeersUnderX from './BeersUnderX';
+import NearToBeer from './NearToBeer';
 
-AppRegistry.registerComponent('beersunderx', () => BeersUnderX);
+AppRegistry.registerComponent('neartobeer', () => NearToBeer);
 
 // Local Variables:
 // mode: js2-jsx

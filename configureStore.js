@@ -4,14 +4,14 @@ import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { persistStore, autoRehydrate } from 'redux-persist';
 
-import beersUnderXReducer from './reducers';
+import nearToBeerReducer from './reducers';
 import { fetchBars } from './actions/bars';
 
 const loggerMiddleware = createLogger();
 
 export default function configureStore(preloadedState) {
   const store = createStore(
-    beersUnderXReducer,
+    nearToBeerReducer,
     preloadedState,
     compose(
       applyMiddleware(

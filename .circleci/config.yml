@@ -3,14 +3,14 @@ jobs:
   build:
     docker:
       - image: myrjola/react-native-android-appium:v0.5
-    working_directory: "/root/beersunderx"
+    working_directory: "/root/neartobeer"
     environment:
       QEMU_AUDIO_DRV: none
       LC_ALL: "C.UTF-8"
     steps:
       - checkout
       - restore_cache:
-          key: beersunderx-node-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: neartobeer-node-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
       - run:
           name: Create artifacts directory
           command: mkdir -p artifacts
@@ -18,36 +18,36 @@ jobs:
           name: Install Dependencies
           command: yarn install
       - save_cache:
-          key: beersunderx-node-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: neartobeer-node-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
             - ~/.npm
             - ~/.cache/yarn
             - /usr/local/lib/node_modules/
       - restore_cache:
-          key: beersunderx-{{ .Branch }}-jest
+          key: neartobeer-{{ .Branch }}-jest
       - run:
           name: NPM Test
           command: npm test
       - save_cache:
-          key: beersunderx-{{ .Branch }}-jest-{{ epoch }}
+          key: neartobeer-{{ .Branch }}-jest-{{ epoch }}
           paths:
             - .jest-cache
       - run:
           name: Create integration test keystore
           command: |
             cd android/app && \
-              keytool -genkey -v -keystore beersunderx.keystore \
-                -alias beersunderx -keyalg RSA -keysize 2048 \
+              keytool -genkey -v -keystore neartobeer.keystore \
+                -alias neartobeer -keyalg RSA -keysize 2048 \
                 -keypass android -storepass android \
-                -dname "CN=Android Integrationtest,O=BeersUnderX,C=SE"
+                -dname "CN=Android Integrationtest,O=Neartobeer,C=SE"
       - run:
           name: Set the correct signing settings
           command: |
             cp android/app/local.properties.integration \
                android/app/local.properties
       - restore_cache:
-          key: beersunderx-gradle-{{ .Branch }}-{{ checksum "android/app/build.gradle" }}
+          key: neartobeer-gradle-{{ .Branch }}-{{ checksum "android/app/build.gradle" }}
       - run:
           name: Create the missing directories for the bundler
           command: |
@@ -68,7 +68,7 @@ jobs:
           environment:
             TERM: dumb
       - save_cache:
-          key: beersunderx-gradle-{{ .Branch }}-{{ checksum "android/app/build.gradle" }}
+          key: neartobeer-gradle-{{ .Branch }}-{{ checksum "android/app/build.gradle" }}
           paths:
             - ~/.gradle
             - android/build

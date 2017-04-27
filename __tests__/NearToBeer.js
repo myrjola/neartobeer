@@ -3,7 +3,7 @@
 // Note: test renderer must be required after react-native.
 // import renderer from 'react-test-renderer';
 
-// import BeersUnderX from '../BeersUnderX.js';
+// import Neartobeer from '../Neartobeer.js';
 
 describe('FirstTest', () => {
   it('should be valid', () => {
@@ -14,7 +14,7 @@ describe('FirstTest', () => {
 // TODO: Find out if it's possible to test rendering of the react-native-maps.
 // it('renders correctly', () => {
 //   renderer.create(
-//     <BeersUnderX />,
+//     <Neartobeer />,
 //   );
 // });
 

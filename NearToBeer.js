@@ -43,7 +43,7 @@ const MainView = () => (
   </View>
 );
 
-const BeersUnderX = () => (
+const NearToBeer = () => (
   <Provider store={store}>
     <Router>
       <Scene key="root" hideNavBar={true}>
@@ -54,7 +54,7 @@ const BeersUnderX = () => (
   </Provider>
 );
 
-export default BeersUnderX;
+export default NearToBeer;
 
 // Local Variables:
 // mode: js2-jsx
