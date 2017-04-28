@@ -39,7 +39,7 @@ yarn-error.log
 # BUCK
 buck-out/
 \.buckd/
-*.keystore
+
 
 # fastlane
 #
@@ -54,3 +54,9 @@ fastlane/screenshots
 .jest-cache
 test_cache
 .test_cache
+
+# Fastlane
+dist
+fastlane/report.xml
+fastlane/.env.*.secret
+*.back
