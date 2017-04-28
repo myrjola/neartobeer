@@ -37,7 +37,7 @@ jobs:
           name: Create integration test keystore
           command: |
             cd android/app && \
-              keytool -genkey -v -keystore neartobeer.keystore \
+              keytool -genkey -v -keystore neartobeer-integration.keystore \
                 -alias neartobeer -keyalg RSA -keysize 2048 \
                 -keypass android -storepass android \
                 -dname "CN=Android Integrationtest,O=Neartobeer,C=SE"
