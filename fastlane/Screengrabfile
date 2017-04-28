@@ -1,0 +1,6 @@
+app_package_name "com.neartobeer.debug"
+app_apk_path "android/app/build/outputs/apk/app-debug.apk"
+tests_apk_path "android/app/build/outputs/apk/app-debug-androidTest.apk"
+
+# clear all previously generated screenshots in your local output directory before creating new ones
+clear_previous_screenshots true

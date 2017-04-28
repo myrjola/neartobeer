@@ -29,72 +29,26 @@ xcode-select --install
 </table>
 
 # Available Actions
-### check_git_status
-```
-fastlane check_git_status
-```
-
-### set_js_env
-```
-fastlane set_js_env
-```
-
-
-----
-
 ## iOS
-### ios setup
+### ios alpha
 ```
-fastlane ios setup
+fastlane ios alpha
 ```
+Submit a new Build to Apple TestFlight
 
-### ios setup_push
-```
-fastlane ios setup_push
-```
-
-### ios build
-```
-fastlane ios build
-```
-
-### ios deploy_hockey
-```
-fastlane ios deploy_hockey
-```
-
-### ios deploy
-```
-fastlane ios deploy
-```
-
-### ios deploy_local
-```
-fastlane ios deploy_local
-```
-
+This will also make sure the profile is up to date
 
 ----
 
 ## Android
-### android build
+### android alpha
 ```
-fastlane android build
+fastlane android alpha
 ```
-
-### android deploy_hockey
+Submit a new Alpha Build to Play Store
+### android screenshots
 ```
-fastlane android deploy_hockey
-```
-
-### android deploy
-```
-fastlane android deploy
-```
-
-### android deploy_local
-```
-fastlane android deploy_local
+fastlane android screenshots
 ```
 
 
