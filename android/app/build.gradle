@@ -84,8 +84,7 @@ def enableProguardInReleaseBuilds = false
 
 def _applicationId = System.getenv("GRADLE_APP_IDENTIFIER") ?: 'com.neartobeer.debug'
 def appName = System.getenv("GRADLE_APP_NAME") ?: 'neartobeer debug'
-def _versionCode = (System.getenv("ANDROID_VERSION_CODE") ?: "1") as Integer
-def _versionName = System.getenv("ANDROID_VERSION_NAME") ?: "1.0.0"
+def _versionName = System.getenv("ANDROID_VERSION_NAME") ?: "alpha"
 
 android {
     compileSdkVersion 23
@@ -101,7 +100,7 @@ android {
         applicationId _applicationId
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode _versionCode
+        versionCode project.hasProperty('versionCode') ? project.property('versionCode') as int : 1
         versionName _versionName
         ndk {
             abiFilters "armeabi-v7a", "x86"
