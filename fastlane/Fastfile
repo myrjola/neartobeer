@@ -15,9 +15,22 @@ end
 
 platform :android do
   desc "Submit a new Alpha Build to Play Store"
+  # Build the release APK
+  lane :build do |options|
+    gradle(task: "assemble",
+           build_type: options[:build_type] || "Release",
+           project_dir: "android/",
+           properties: {
+             'versionCode' => options[:version_code] || 1,
+             'versionName' => options[:version_name] || "alpha"
+           })
+  end
+
   lane :alpha do
-    gradle(task: "assemble", build_type: "Release", project_dir: "android/") # Build the Release APK
-    supply(track: "alpha", apk: "android/app/build/outputs/apk/app-release.apk") # Upload the APK to the Play Store (alpha)
+    version_code = bump_version_code
+    build(version_code: version_code, version_name: "alpha")
+    # Upload the APK to the Play Store
+    supply(track: "alpha", apk: "android/app/build/outputs/apk/app-release.apk")
   end
 
   lane :screenshots do
@@ -27,15 +40,19 @@ platform :android do
   end
 
   lane :bump_version_code do
-    path = '../app/build.gradle'
-    re = /versionCode\s+(\d+)/
+    # Get the last version code and increment it.
+    versionFile = "metadata/androidVersionCode"
+    versionCode = File.read(versionFile).to_i
+    versionCode = versionCode+1
 
-    s = File.read(path)
-    versionCode = s[re, 1].to_i
-    s[re, 1] = (versionCode + 1).to_s
-
-    f = File.new(path, 'w')
-    f.write(s)
+    f = File.new(versionFile, "w")
+    f.write(versionCode)
     f.close
+
+    versionCode
   end
 end
+
+# Local Variables:
+# mode: ruby
+# End:

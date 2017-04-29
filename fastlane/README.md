@@ -41,14 +41,24 @@ This will also make sure the profile is up to date
 ----
 
 ## Android
+### android build
+```
+fastlane android build
+```
+Submit a new Alpha Build to Play Store
 ### android alpha
 ```
 fastlane android alpha
 ```
-Submit a new Alpha Build to Play Store
+
 ### android screenshots
 ```
 fastlane android screenshots
+```
+
+### android bump_version_code
+```
+fastlane android bump_version_code
 ```
 
 

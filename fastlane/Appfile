@@ -8,4 +8,4 @@ itc_team_name ENV['IOS_ITC_TEAM_NAME']
 
 # Android
 json_key_file "android/app/neartobeer-credentials.json"
-package_name "com.neartobeer.debug"
+package_name "com.neartobeer"
