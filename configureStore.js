@@ -10,14 +10,12 @@ import { fetchBars } from './actions/bars';
 const loggerMiddleware = createLogger();
 
 export default function configureStore(preloadedState) {
+  const middleware = (global.__DEV__) ? [thunkMiddleware, loggerMiddleware] : [thunkMiddleware];
   const store = createStore(
     nearToBeerReducer,
     preloadedState,
     compose(
-      applyMiddleware(
-        thunkMiddleware,
-        loggerMiddleware,
-      ),
+      applyMiddleware(...middleware),
       autoRehydrate(),
     ),
   );
