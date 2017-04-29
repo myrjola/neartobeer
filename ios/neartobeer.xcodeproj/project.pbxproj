@@ -21,6 +21,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		5607E9210EE14317927F5FB7 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57846874CA3C4CD1AE37966A /* Zocial.ttf */; };
+		5BC86B6E1EB4CD2200E60CCD /* neartobeerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC86B6D1EB4CD2200E60CCD /* neartobeerUITests.swift */; };
+		5BC86B761EB4CE1D00E60CCD /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC86B751EB4CE1D00E60CCD /* SnapshotHelper.swift */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		72BE793228214DA192D615CC /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A6B4D2694B489BB3F7DA73 /* libRNVectorIcons.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -198,6 +200,13 @@
 			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
 			remoteInfo = RNVectorIcons;
 		};
+		5BC86B701EB4CD2200E60CCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = neartobeer;
+		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -250,6 +259,10 @@
 		46D6A2AD30424B9DA6A63D02 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		56A6B4D2694B489BB3F7DA73 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		57846874CA3C4CD1AE37966A /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		5BC86B6B1EB4CD2200E60CCD /* neartobeerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = neartobeerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BC86B6D1EB4CD2200E60CCD /* neartobeerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = neartobeerUITests.swift; sourceTree = "<group>"; };
+		5BC86B6F1EB4CD2200E60CCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BC86B751EB4CE1D00E60CCD /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		62BB2350C074476E83DB8CB1 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
@@ -282,6 +295,13 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				878164ECFF4E4D91B1F1F1B2 /* libAirMaps.a in Frameworks */,
 				72BE793228214DA192D615CC /* libRNVectorIcons.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BC86B681EB4CD2200E60CCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +413,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5BC86B6C1EB4CD2200E60CCD /* neartobeerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5BC86B751EB4CE1D00E60CCD /* SnapshotHelper.swift */,
+				5BC86B6D1EB4CD2200E60CCD /* neartobeerUITests.swift */,
+				5BC86B6F1EB4CD2200E60CCD /* Info.plist */,
+			);
+			path = neartobeerUITests;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -445,6 +475,7 @@
 			children = (
 				13B07FAE1A68108700A75B9A /* neartobeer */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				5BC86B6C1EB4CD2200E60CCD /* neartobeerUITests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				C35D2123EC894ADEAF7C264C /* Resources */,
 			);
@@ -456,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* neartobeer.app */,
+				5BC86B6B1EB4CD2200E60CCD /* neartobeerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -498,18 +530,43 @@
 			productReference = 13B07F961A680F5B00A75B9A /* neartobeer.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5BC86B6A1EB4CD2200E60CCD /* neartobeerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BC86B721EB4CD2200E60CCD /* Build configuration list for PBXNativeTarget "neartobeerUITests" */;
+			buildPhases = (
+				5BC86B671EB4CD2200E60CCD /* Sources */,
+				5BC86B681EB4CD2200E60CCD /* Frameworks */,
+				5BC86B691EB4CD2200E60CCD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5BC86B711EB4CD2200E60CCD /* PBXTargetDependency */,
+			);
+			name = neartobeerUITests;
+			productName = neartobeerUITests;
+			productReference = 5BC86B6B1EB4CD2200E60CCD /* neartobeerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 62A9X3G6U8;
 						ProvisioningStyle = Automatic;
+					};
+					5BC86B6A1EB4CD2200E60CCD = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 62A9X3G6U8;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 				};
 			};
@@ -581,6 +638,7 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* neartobeer */,
+				5BC86B6A1EB4CD2200E60CCD /* neartobeerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -797,6 +855,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5BC86B691EB4CD2200E60CCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -826,7 +891,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5BC86B671EB4CD2200E60CCD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BC86B6E1EB4CD2200E60CCD /* neartobeerUITests.swift in Sources */,
+				5BC86B761EB4CE1D00E60CCD /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5BC86B711EB4CD2200E60CCD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* neartobeer */;
+			targetProxy = 5BC86B701EB4CD2200E60CCD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
@@ -895,6 +977,46 @@
 				PRODUCT_NAME = neartobeer;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		5BC86B731EB4CD2200E60CCD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 62A9X3G6U8;
+				INFOPLIST_FILE = neartobeerUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.martinyrjola.neartobeerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = neartobeer;
+			};
+			name = Debug;
+		};
+		5BC86B741EB4CD2200E60CCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 62A9X3G6U8;
+				INFOPLIST_FILE = neartobeerUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.martinyrjola.neartobeerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = neartobeer;
 			};
 			name = Release;
 		};
@@ -992,6 +1114,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		5BC86B721EB4CD2200E60CCD /* Build configuration list for PBXNativeTarget "neartobeerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BC86B731EB4CD2200E60CCD /* Debug */,
+				5BC86B741EB4CD2200E60CCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "neartobeer" */ = {
 			isa = XCConfigurationList;

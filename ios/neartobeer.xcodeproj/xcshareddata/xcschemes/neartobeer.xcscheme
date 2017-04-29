@@ -66,6 +66,16 @@
                ReferencedContainer = "container:neartobeer.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5BC86B6A1EB4CD2200E60CCD"
+               BuildableName = "neartobeerUITests.xctest"
+               BlueprintName = "neartobeerUITests"
+               ReferencedContainer = "container:neartobeer.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

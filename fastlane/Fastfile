@@ -33,12 +33,7 @@ platform :android do
     supply(track: "alpha", apk: "android/app/build/outputs/apk/app-release.apk")
   end
 
-  lane :screenshots do
-    gradle(task: "assemble", build_type: "Debug", project_dir: "android/") # Build the debug apk
-    gradle(task: "installDebugAndroidTest", project_dir: "android/") # Build the tests
-    screengrab
-  end
-
+  re
   lane :bump_version_code do
     # Get the last version code and increment it.
     versionFile = "metadata/androidVersionCode"
