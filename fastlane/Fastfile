@@ -28,23 +28,35 @@ platform :android do
 
   lane :alpha do
     version_code = bump_version_code
-    build(version_code: version_code, version_name: "alpha")
+    # Ask for a multi-line input. The user confirms their input by typing `END`
+    # and Enter
+    changelog = prompt(
+      text: "Changelog: ",
+      multi_line_end_keyword: "END"
+    )
+    changelog_file = "metadata/android/en-US/changelogs/#{version_code}.txt"
+    File.write(changelog_file, changelog)
+
+    build(version_code: version_code, version_name: "alpha_#{version_code}")
     # Upload the APK to the Play Store
     supply(track: "alpha", apk: "android/app/build/outputs/apk/app-release.apk")
   end
 
-  re
+  lane :screenshots do
+    build(build_type: "Debug")
+    gradle(task: "installDebugAndroidTest", project_dir: "android/")
+    screengrab
+  end
+
   lane :bump_version_code do
     # Get the last version code and increment it.
-    versionFile = "metadata/androidVersionCode"
-    versionCode = File.read(versionFile).to_i
-    versionCode = versionCode+1
+    version_file = "metadata/androidVersionCode"
+    version_code = File.read(version_file).to_i
+    version_code = version_code+1
 
-    f = File.new(versionFile, "w")
-    f.write(versionCode)
-    f.close
+    File.write(version_file, version_code)
 
-    versionCode
+    version_code
   end
 end
 
