@@ -40,25 +40,22 @@ yarn-error.log
 buck-out/
 \.buckd/
 
-
 # fastlane
 #
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
+# It is recommended to not store the screenshots in the git repo. Instead, use
+# fastlane to re-generate the screenshots whenever they are needed. For more
+# information about the recommended setup visit:
 # https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
 
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
-.jest-cache
-test_cache
-.test_cache
-
-# Fastlane
-dist
-fastlane/report.xml
 fastlane/.env.*.secret
 *.back
 /fastlane/metadata/android/en-US/images/phoneScreenshots
 /android/app/neartobeer-credentials-myrjola.json
+
+.jest-cache
+test_cache
+.test_cache
+dist
