@@ -8,7 +8,7 @@ platform :ios do
   lane :alpha do
     sigh
     increment_build_number(xcodeproj: './ios/neartobeer.xcodeproj') # Increment the build number
-    gym(scheme: "Near to beer", project: './ios/neartobeer.xcodeproj') # Build the app
+    gym(scheme: “neartobeer”, project: './ios/neartobeer.xcodeproj') # Build the app
     pilot(skip_submission: true) # Upload the app to TestFlight
   end
 end

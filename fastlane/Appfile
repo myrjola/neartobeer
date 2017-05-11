@@ -1,8 +1,8 @@
 # See https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Appfile.md
 
 # iOS
-app_identifier ENV['IOS_APP_ID']
-apple_id ENV['IOS_USER_ID']
+app_identifier ***REMOVED***
+apple_id ***REMOVED***
 team_id ENV['IOS_TEAM_ID']
 itc_team_name ENV['IOS_ITC_TEAM_NAME']
 
