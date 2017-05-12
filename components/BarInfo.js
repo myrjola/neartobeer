@@ -1,14 +1,9 @@
 import React, { PropTypes } from 'react';
-import { Animated, Dimensions, Image, PanResponder, StyleSheet, View, WebView } from 'react-native';
+import { Animated, Image, PanResponder, StyleSheet, View, WebView } from 'react-native';
 
 import GreyText from './GreyText';
 import { chooseBeerIcon } from './BarMarker';
-import { borderColor, backgroundColor } from '../constants';
-
-const { height, width } = Dimensions.get('window');
-
-const badgeSize = height / 11;
-const badgeXPosition = width * (3 / 4);
+import { width, height, borderColor, backgroundColor, badgeSize, badgeXPosition } from '../constants';
 
 // We have an invisible view half of badgeSize before the content starts.
 const barInfoTopWithBadge = -height - (badgeSize / 2);

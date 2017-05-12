@@ -10,7 +10,8 @@ import FilteredBarMap from './containers/FilteredBarMap';
 import MaxBeerPriceSelector from './containers/MaxBeerPriceSelector';
 import BarInfoContainer from './containers/BarInfoContainer';
 import ZoomToUserLocationButton from './components/ZoomToUserLocationButton';
-import { backgroundColor, borderColor, navBarHeight } from './constants';
+import { height, backgroundColor, borderColor, navBarHeight,
+         badgeSize, badgeXPosition, buttonSize } from './constants';
 
 const store = configureStore();
 
@@ -23,22 +24,54 @@ const styles = StyleSheet.create({
     height: navBarHeight,
     backgroundColor,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
-    borderBottomColor: borderColor,
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderTopColor: borderColor,
+    borderTopWidth: StyleSheet.hairlineWidth,
+  },
+  userLocationButton: {
+    flex: 0,
+    position: 'absolute',
+    left: badgeXPosition,
+    top: height * (8 / 11),
+    height: badgeSize,
+    width: badgeSize,
+    elevation: 2,
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    borderRadius: 50,
+  },
+  aboutButton: {
+    flex: 0,
+    position: 'absolute',
+    left: 10,
+    top: 10,
+    height: buttonSize,
+    width: buttonSize,
+    elevation: 2,
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    borderRadius: 5,
   },
 });
 
 const MainView = () => (
   <View style={styles.appView}>
     <StatusBar hidden={true} />
-    <View style={styles.buttonRow}>
-      <AboutButton />
-      <MaxBeerPriceSelector />
-      <ZoomToUserLocationButton />
-    </View>
     <FilteredBarMap />
+    <AboutButton style={styles.aboutButton} />
+    <ZoomToUserLocationButton style={styles.userLocationButton} />
+    <View style={styles.buttonRow}>
+      <MaxBeerPriceSelector />
+    </View>
     <BarInfoContainer />
   </View>
 );
