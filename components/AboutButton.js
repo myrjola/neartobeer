@@ -3,9 +3,6 @@ import { Actions } from 'react-native-router-flux';
 import { StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { backgroundColor } from '../constants';
-
-
 const styles = StyleSheet.create({
   aboutIcon: {
     marginRight: 0,
