@@ -26,8 +26,6 @@ const AboutButton = ({ style }) => (
       iconStyle={styles.aboutIcon}
       onPress={Actions.aboutView}
       accessibilityLabel="About button"
-      backgroundColor={backgroundColor}
-      color="darkgrey"
       borderRadius={5}
       style={styles.buttonStyle}
     />
