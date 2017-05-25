@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { deselectBar } from '../actions/bars';
 
 import BarInfo from '../components/BarInfo';
 
@@ -11,8 +12,15 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = dispatch => ({
+  hideBarInfoView: () => {
+    dispatch(deselectBar);
+  },
+});
+
 const BarInfoContainer = connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(BarInfo);
 
 export default BarInfoContainer;

@@ -63,6 +63,7 @@ class BarInfo extends React.Component {
     }),
     walkingDuration: PropTypes.string.isRequired,
     walkingDistance: PropTypes.string.isRequired,
+    hideBarInfoView: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -159,8 +160,8 @@ class BarInfo extends React.Component {
   };
 
   _handlePanResponderEnd = (e: Object, gestureState: Object) => {
-    if (gestureState.dy < 1) {
-      this._expandBarInfoView();
+    if (gestureState.dy > 1) {
+      this.props.hideBarInfoView();
     } else {
       this._compactOrHiddenBarInfoView(this.state.bar);
     }
