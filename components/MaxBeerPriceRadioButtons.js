@@ -13,9 +13,16 @@ const styles = StyleSheet.create({
   viewContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
+    elevation: 2,
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
   },
   optionText: {
-    fontSize: 18,
+    fontSize: 24,
   },
 });
 
@@ -23,8 +30,6 @@ const extractNumber = string => string.match(/\d+/)[0];
 
 
 const MaxBeerPriceRadioButtons = (props) => {
-  console.log(props);
-
   function getOptionColor(option, selectedOption) {
     switch (option) {
       case BEER_UNDER_30:
