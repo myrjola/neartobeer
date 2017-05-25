@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   contentView: {
     top: badgeSize / 2,
     flex: 1,
+    padding: 10,
     backgroundColor,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderColor,
@@ -106,7 +107,7 @@ class BarInfo extends React.Component {
 
   _compactOrHiddenBarInfoView(bar) {
     const hiddenYPosition = 0;
-    const compactYPosition = -height * (1.0 / 6.0);
+    const compactYPosition = -height * (2.0 / 11.0);
     this._animateBarInfoView(bar ? compactYPosition : hiddenYPosition);
   }
 
