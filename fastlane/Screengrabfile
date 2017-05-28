@@ -1,4 +1,4 @@
-app_package_name "com.neartobeer.debug"
+app_package_name "com.neartobeer"
 app_apk_path "android/app/build/outputs/apk/app-debug.apk"
 tests_apk_path "android/app/build/outputs/apk/app-debug-androidTest.apk"
 

@@ -1,9 +1,14 @@
 package com.neartobeer;
 
 
+import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.support.test.uiautomator.UiDevice;
+import android.support.test.uiautomator.UiObject;
+import android.support.test.uiautomator.UiObjectNotFoundException;
+import android.support.test.uiautomator.UiSelector;
 import android.test.suitebuilder.annotation.LargeTest;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +39,8 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void mainActivityTest() {
+    public void mainActivityTest() throws UiObjectNotFoundException {
+        UiDevice device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         Screengrab.setDefaultScreenshotStrategy(new UiAutomatorScreenshotStrategy());
 
         // Added a sleep statement to match the app's execution delay.
@@ -48,14 +54,9 @@ public class MainActivityTest {
 
         Screengrab.screenshot("app_loaded");
 
-        ViewInteraction viewGroup = onView(
-                allOf(childAtPosition(
-                        childAtPosition(
-                                IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class),
-                                4),
-                        0),
-                        isDisplayed()));
-        viewGroup.perform(click());
+        UiObject centerOnUserButton = device.findObject(new UiSelector()
+                .description("Center on user"));
+        centerOnUserButton.click();
 
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
@@ -67,6 +68,21 @@ public class MainActivityTest {
         }
 
         Screengrab.screenshot("zoomed_in_to_user");
+
+        UiObject aboutButton = device.findObject(new UiSelector()
+                .description("About button"));
+        aboutButton.click();
+
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        Screengrab.screenshot("about_button");
     }
 
     private static Matcher<View> childAtPosition(
