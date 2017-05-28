@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 });
 
 const ZoomToUserLocationButton = ({ style }) => (
-  <View style={style}>
+  <View style={style} accessibilityLabel="Center on user">
     <Icon.Button
       name="gps-fixed"
       size={24}

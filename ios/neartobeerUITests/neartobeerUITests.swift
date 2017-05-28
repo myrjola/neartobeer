@@ -44,5 +44,13 @@ class neartobeerUITests: XCTestCase {
     let app = XCUIApplication()
     app.tap()
     snapshot("Launch")
+
+    app.otherElements.matching(identifier: "Center on user").element(boundBy: 0).tap()
+    app.otherElements.matching(identifier: "40kr").element(boundBy: 0).tap()
+    app.otherElements.matching(identifier: "Map pin").element(boundBy: 2).tap()
+    snapshot("Bar clicked")
+    
+    app.otherElements.matching(identifier: "About button").element(boundBy: 0).tap()
+    snapshot("About us")
   }
 }
