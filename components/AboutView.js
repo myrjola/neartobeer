@@ -1,11 +1,15 @@
 import React from 'react';
-import { StyleSheet, TextInput, Alert, Button, Text, View } from 'react-native';
-import { navBarHeight } from '../constants';
+import { Image, StyleSheet, TextInput, Alert, Button, Text, View } from 'react-native';
+import { width, navBarHeight } from '../constants';
+import icon from '../images/icon.png';
+
+const textInputMargin = 20;
 
 const styles = StyleSheet.create({
   appView: {
     flex: 1,
-    backgroundColor: '#fcbb3a',
+    alignItems: 'center',
+    backgroundColor: '#f47621',
     top: navBarHeight,
   },
   title: {
@@ -13,16 +17,21 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 30,
   },
+  icon: {
+    flex: 1,
+    width: width * 0.5,
+  },
   subtitle: {
     textAlign: 'center',
   },
   textinput: {
     backgroundColor: '#ffffff',
     padding: 10,
-    marginHorizontal: 20,
+    marginHorizontal: textInputMargin,
     borderRadius: 5,
-    marginVertical: 20,
+    marginVertical: textInputMargin,
     height: 100,
+    width: width - (2 * textInputMargin),
     textAlignVertical: 'top',
   },
   button: {
@@ -56,12 +65,13 @@ class AboutView extends React.Component {
   render() {
     return (
       <View style={styles.appView} accessibilityLabel="About the service">
+        <Image source={icon} style={styles.icon} resizeMode={Image.resizeMode.contain} />
         <Text style={styles.title}>
-                Neartobeer
-            </Text>
+          Neartobeer
+        </Text>
         <Text style={styles.subtitle}>
-                Your best bet to get a cheap beer nearby
-            </Text>
+          Your best bet to get a cheap beer nearby
+        </Text>
         <TextInput
           style={styles.textinput}
           placeholder="Send us bar/price updates or feedback!"
