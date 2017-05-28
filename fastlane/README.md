@@ -37,6 +37,11 @@ fastlane ios alpha
 Submit a new Build to Apple TestFlight
 
 This will also make sure the profile is up to date
+### ios screenshots
+```
+fastlane ios screenshots
+```
+
 
 ----
 

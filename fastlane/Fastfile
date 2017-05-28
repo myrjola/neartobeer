@@ -1,3 +1,4 @@
+# coding: utf-8
 fastlane_version "2.28.5"
 
 default_platform :ios
@@ -10,6 +11,10 @@ platform :ios do
     increment_build_number(xcodeproj: './ios/neartobeer.xcodeproj') # Increment the build number
     gym(scheme: “neartobeer”, project: './ios/neartobeer.xcodeproj') # Build the app
     pilot(skip_submission: true) # Upload the app to TestFlight
+  end
+
+  lane :screenshots do
+    snapshot
   end
 end
 
