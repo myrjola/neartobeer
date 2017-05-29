@@ -65,7 +65,11 @@ class AboutView extends React.Component {
   render() {
     return (
       <View style={styles.appView} accessibilityLabel="About the service">
-        <Image source={icon} style={styles.icon} resizeMode={Image.resizeMode.contain} />
+        <Image
+          source={this.text ? undefined : icon}
+          style={this.text ? undefined : styles.icon}
+          resizeMode={Image.resizeMode.contain}
+        />
         <Text style={styles.title}>
           Neartobeer
         </Text>
