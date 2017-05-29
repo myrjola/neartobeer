@@ -25,6 +25,7 @@ const AboutButton = ({ style }) => (
       accessibilityLabel="About button"
       borderRadius={5}
       style={styles.buttonStyle}
+      backgroundColor="#f47621"
     />
   </View>
 );

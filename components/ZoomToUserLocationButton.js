@@ -42,6 +42,7 @@ const ZoomToUserLocationButton = ({ style }) => (
       onPress={zoomToUserLocation}
       borderRadius={50}
       style={styles.buttonStyle}
+      backgroundColor="#f47621"
     />
   </View>
 );
