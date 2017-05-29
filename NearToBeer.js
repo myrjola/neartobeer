@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: borderColor,
+    borderColor,
     borderWidth: StyleSheet.hairlineWidth,
   },
   userLocationButton: {
