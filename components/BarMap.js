@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
 import BarMarkerContainer from '../containers/BarMarkerContainer';
@@ -7,9 +8,7 @@ import WalkingDirections from '../containers/WalkingDirections';
 const BarMap = ({ items, onPress }) => (
   <MapView
     ref={(ref) => { this.map = ref; }}
-    style={{
-      flex: 1,
-    }}
+    style={ StyleSheet.absoluteFillObject }
     onPress={onPress}
     showsUserLocation={true}
     showsMyLocationButton={false}

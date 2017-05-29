@@ -10,24 +10,30 @@ import FilteredBarMap from './containers/FilteredBarMap';
 import MaxBeerPriceSelector from './containers/MaxBeerPriceSelector';
 import BarInfoContainer from './containers/BarInfoContainer';
 import ZoomToUserLocationButton from './components/ZoomToUserLocationButton';
-import { height, backgroundColor, borderColor, navBarHeight,
+import { width, height, backgroundColor, borderColor, navBarHeight,
          badgeSize, badgeXPosition, buttonSize } from './constants';
 
 const store = configureStore();
+
+const buttonRowMargin = 30;
 
 const styles = StyleSheet.create({
   appView: {
     flex: 1,
   },
   buttonRow: {
-    padding: 10,
+    position: 'absolute',
+    bottom: buttonRowMargin,
+    margin: buttonRowMargin,
+    width: width - (buttonRowMargin * 2),
+    borderRadius: 10,
     height: navBarHeight,
     backgroundColor,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    borderTopColor: borderColor,
-    borderTopWidth: StyleSheet.hairlineWidth,
+    borderColor: borderColor,
+    borderWidth: StyleSheet.hairlineWidth,
   },
   userLocationButton: {
     flex: 0,
