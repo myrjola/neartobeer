@@ -8,7 +8,7 @@ import WalkingDirections from '../containers/WalkingDirections';
 const BarMap = ({ items, onPress }) => (
   <MapView
     ref={(ref) => { this.map = ref; }}
-    style={ StyleSheet.absoluteFillObject }
+    style={StyleSheet.absoluteFillObject}
     onPress={onPress}
     showsUserLocation={true}
     showsMyLocationButton={false}
