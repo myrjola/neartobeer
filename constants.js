@@ -3,7 +3,7 @@ import { Dimensions, Platform } from 'react-native';
 export const { height, width } = Dimensions.get('window');
 
 export const borderColor = '#BBB';
-export const backgroundColor = '#EFEFF2';
+export const backgroundColor = 'white';
 
 export const navBarHeight = Platform.select({
   ios: 64,
