@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     bottom: buttonRowMargin,
     margin: buttonRowMargin,
     width: width - (buttonRowMargin * 2),
-    borderRadius: 10,
     height: navBarHeight,
     backgroundColor,
     flexDirection: 'row',
