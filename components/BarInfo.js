@@ -29,6 +29,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     width: badgeXPosition,
   },
+  separator: {
+    height: 1,
+    backgroundColor: 'black',
+    opacity: 0.54,
+  },
   barDescription: {
     flex: 1,
     backgroundColor: 'transparent',
@@ -191,6 +196,7 @@ class BarInfo extends React.Component {
             {bar.post_address}{'\n'}
             {walkingDuration} ({walkingDistance}) walk
           </GreyText>
+          <View style={styles.separator} />
           <WebView source={{ html: bar.post_content }} style={styles.barDescription} scrollEnabled={false} />
         </View>
         <Animated.View
