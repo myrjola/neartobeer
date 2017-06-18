@@ -9,14 +9,21 @@ const styles = StyleSheet.create({
   option: {
     margin: 10,
     paddingHorizontal: 10,
-    borderRadius: 10,
+    elevation: 2,
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
   },
   viewContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
   optionText: {
-    fontSize: 24,
+    fontSize: 16,
+    padding: 5,
   },
 });
 
