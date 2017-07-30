@@ -92,7 +92,7 @@ android {
     if (continuousIntegrationBuild != null) {
       dexOptions.preDexLibraries = false
     }
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '25.0.3'
 
     defaultConfig {
         minSdkVersion 16
