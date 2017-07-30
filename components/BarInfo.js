@@ -158,7 +158,9 @@ class BarInfo extends React.Component {
   }
 
   _handlePanResponderGrant = () => {
-    this._yPosition.stopAnimation(position => (this._dragStartYPosition = position));
+    this._yPosition.stopAnimation((position) => {
+      this._dragStartYPosition = position;
+    });
   };
 
   _handlePanResponderMove = (e: Object, gestureState: Object) => {
