@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Animated, Image, PanResponder, StyleSheet, View, WebView } from 'react-native';
 
 import GreyText from './GreyText';

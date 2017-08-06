@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { RadioButtons } from 'react-native-radio-buttons';
 
