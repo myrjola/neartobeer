@@ -11,7 +11,7 @@ import MaxBeerPriceSelector from './containers/MaxBeerPriceSelector';
 import BarInfoContainer from './containers/BarInfoContainer';
 import ZoomToUserLocationButton from './components/ZoomToUserLocationButton';
 import { width, height, backgroundColor, borderColor, navBarHeight,
-         badgeSize, badgeXPosition, buttonSize } from './constants';
+  badgeSize, badgeXPosition, buttonSize } from './constants';
 
 const store = configureStore();
 
@@ -95,5 +95,5 @@ const NearToBeer = () => (
 export default NearToBeer;
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

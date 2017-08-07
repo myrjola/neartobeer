@@ -41,5 +41,5 @@ GreyText.defaultProps = {
 export default GreyText;
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

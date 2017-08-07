@@ -10,5 +10,5 @@ const checkStatus = function (response) {
 export default checkStatus;
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

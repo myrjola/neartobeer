@@ -12,5 +12,5 @@ const neartobeerReducer = combineReducers({
 export default neartobeerReducer;
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

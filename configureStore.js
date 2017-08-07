@@ -20,11 +20,11 @@ export default function configureStore(preloadedState) {
     ),
   );
   persistStore(store, { storage: AsyncStorage },
-               () => store.dispatch(fetchBars()));
+    () => store.dispatch(fetchBars()));
 
   return store;
 }
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

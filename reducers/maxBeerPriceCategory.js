@@ -17,5 +17,5 @@ const maxBeerPriceCategory = (state = BEER_UNDER_50, action) => {
 export default maxBeerPriceCategory;
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

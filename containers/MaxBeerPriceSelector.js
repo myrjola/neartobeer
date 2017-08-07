@@ -21,5 +21,5 @@ const MaxBeerPriceSelector = connect(
 export default MaxBeerPriceSelector;
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

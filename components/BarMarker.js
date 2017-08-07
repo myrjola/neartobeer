@@ -59,5 +59,5 @@ BarMarker.propTypes = {
 export default BarMarker;
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

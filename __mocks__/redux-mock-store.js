@@ -7,5 +7,5 @@ const mockStore = configureMockStore(middlewares);
 export default mockStore;
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

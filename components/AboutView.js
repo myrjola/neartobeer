@@ -90,5 +90,5 @@ class AboutView extends React.Component {
 export default AboutView;
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

@@ -5,7 +5,7 @@ const EXECUTE_ACTION_ELEMENT_ID = 'Execute';
 
 export function runApp() {
   before(() => webDriver.createDriver()
-         .then(() => actionServer.startServer()),
+    .then(() => actionServer.startServer()),
   );
 }
 
@@ -25,3 +25,7 @@ export function redirect(name, params) {
   return callApp({ redirects: [{ name, params }] });
 }
 export const getDriver = webDriver.getDriver;
+
+// Local Variables:
+// mode: react
+// End:

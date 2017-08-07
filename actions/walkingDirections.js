@@ -83,5 +83,5 @@ export function fetchWalkingDirectionsIfNeeded(destination) {
 
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

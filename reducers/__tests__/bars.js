@@ -1,7 +1,7 @@
 import mockStore from 'redux-mock-store';
 
 import { requestBars, receiveBars, invalidateBars,
-         fetchBarsIfNeeded, selectBar, deselectBar } from '../../actions/bars';
+  fetchBarsIfNeeded, selectBar, deselectBar } from '../../actions/bars';
 import bars, { initialState } from '../bars';
 
 const exampleBars = [
@@ -107,5 +107,5 @@ it('invalidates over one hour old cache', async () => {
 });
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

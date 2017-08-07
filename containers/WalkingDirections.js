@@ -8,11 +8,11 @@ const mapStateToProps = state => ({
 });
 
 const WalkingDirections = connect(
-    mapStateToProps,
+  mapStateToProps,
 )(MapView.Polyline);
 
 export default WalkingDirections;
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

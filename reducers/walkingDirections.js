@@ -1,7 +1,7 @@
 import { REHYDRATE } from 'redux-persist/constants';
 
 import { REQUEST_WALKING_DIRECTIONS, RECEIVE_WALKING_DIRECTIONS, ERROR_WALKING_DIRECTIONS,
-         coordinatesMatch } from '../actions/walkingDirections';
+  coordinatesMatch } from '../actions/walkingDirections';
 
 export const initialState = {
   isFetching: false,
@@ -57,5 +57,5 @@ function walkingDirections(state = initialState, action) {
 export default walkingDirections;
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

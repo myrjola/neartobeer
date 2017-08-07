@@ -4,10 +4,14 @@ describe('about', () => {
   runApp();
 
   it('opens and renders about page', () =>
-     getDriver()
-     .elementByAccessibilityId('About button')
-     .catch()
-     .click()
-     .waitForElementByAccessibilityId('About the service'),
-    );
+    getDriver()
+      .elementByAccessibilityId('About button')
+      .catch()
+      .click()
+      .waitForElementByAccessibilityId('About the service'),
+  );
 });
+
+// Local Variables:
+// mode: react
+// End:

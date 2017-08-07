@@ -26,5 +26,5 @@ const BarInfoContainer = connect(
 export default BarInfoContainer;
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

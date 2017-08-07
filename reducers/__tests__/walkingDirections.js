@@ -1,7 +1,7 @@
 import mockStore from 'redux-mock-store';
 
 import { requestWalkingDirections, receiveWalkingDirections,
-         fetchWalkingDirectionsIfNeeded } from '../../actions/walkingDirections';
+  fetchWalkingDirectionsIfNeeded } from '../../actions/walkingDirections';
 import walkingDirections, { initialState } from '../walkingDirections';
 
 var store = null;
@@ -68,5 +68,5 @@ it('errors when geolocation fails', async () => {
 });
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

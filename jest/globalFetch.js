@@ -19,5 +19,5 @@ fetch.mockResponseFailure = (error) => {
 };
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

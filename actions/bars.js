@@ -71,5 +71,5 @@ export function fetchBarsIfNeeded() {
 }
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

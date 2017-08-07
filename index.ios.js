@@ -4,5 +4,5 @@ import NearToBeer from './NearToBeer';
 AppRegistry.registerComponent('neartobeer', () => NearToBeer);
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:

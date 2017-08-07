@@ -6,5 +6,5 @@ it('sets max beer price category', () => {
 });
 
 // Local Variables:
-// mode: js2-jsx
+// mode: react
 // End:
