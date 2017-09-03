@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, TextInput, Alert, Button, ScrollView, View } from 'react-native';
-import { width, navBarHeight } from '../constants';
+import { width } from '../constants';
 import icon from '../images/aboutlogo.png';
 
 const textInputMargin = 20;
@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#f47621',
-    top: navBarHeight,
   },
   icon: {
     flex: 1,

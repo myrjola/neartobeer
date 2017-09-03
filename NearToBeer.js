@@ -10,12 +10,12 @@ import FilteredBarMap from './containers/FilteredBarMap';
 import MaxBeerPriceSelector from './containers/MaxBeerPriceSelector';
 import BarInfoContainer from './containers/BarInfoContainer';
 import ZoomToUserLocationButton from './components/ZoomToUserLocationButton';
-import { width, height, backgroundColor, borderColor, navBarHeight,
-  badgeSize, badgeXPosition, buttonSize } from './constants';
+import { width, height, backgroundColor, borderColor, badgeSize,
+  badgeXPosition, buttonSize } from './constants';
 
 const store = configureStore();
 
-const buttonRowMargin = 30;
+const buttonRowMargin = 10;
 
 const styles = StyleSheet.create({
   appView: {
@@ -26,44 +26,25 @@ const styles = StyleSheet.create({
     bottom: buttonRowMargin,
     margin: buttonRowMargin,
     width: width - (buttonRowMargin * 2),
-    height: navBarHeight,
+    height: 50,
     backgroundColor,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     borderColor,
     borderWidth: StyleSheet.hairlineWidth,
   },
   userLocationButton: {
     flex: 0,
-    position: 'absolute',
-    left: badgeXPosition,
-    top: height * (8 / 11),
     height: badgeSize,
     width: badgeSize,
     elevation: 2,
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    borderRadius: 50,
+    borderRadius: 5,
   },
   aboutButton: {
     flex: 0,
-    position: 'absolute',
-    left: 10,
-    top: 10,
     height: buttonSize,
     width: buttonSize,
-    elevation: 2,
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
     borderRadius: 5,
   },
 });
@@ -72,10 +53,10 @@ const MainView = () => (
   <View style={styles.appView}>
     <StatusBar hidden={true} />
     <FilteredBarMap />
-    <AboutButton style={styles.aboutButton} />
-    <ZoomToUserLocationButton style={styles.userLocationButton} />
     <View style={styles.buttonRow}>
+      <AboutButton style={styles.aboutButton} />
       <MaxBeerPriceSelector />
+      <ZoomToUserLocationButton style={styles.userLocationButton} />
     </View>
     <BarInfoContainer />
   </View>

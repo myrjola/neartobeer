@@ -3,6 +3,8 @@ import { Actions } from 'react-native-router-flux';
 import { StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import { backgroundColor, borderColor } from '../constants';
+
 const styles = StyleSheet.create({
   aboutIcon: {
     marginRight: 0,
@@ -25,7 +27,8 @@ const AboutButton = ({ style }) => (
       accessibilityLabel="About button"
       borderRadius={5}
       style={styles.buttonStyle}
-      backgroundColor="#f47621"
+      backgroundColor={backgroundColor}
+      color={borderColor}
     />
   </View>
 );

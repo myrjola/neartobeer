@@ -8,15 +8,9 @@ import { BEER_UNDER_30, BEER_UNDER_40, BEER_UNDER_50 } from '../reducers/maxBeer
 
 const styles = StyleSheet.create({
   option: {
-    margin: 10,
-    paddingHorizontal: 10,
-    elevation: 2,
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
+    margin: 5,
+    paddingHorizontal: 5,
+    borderRadius: 15,
   },
   viewContainer: {
     flexDirection: 'row',
@@ -25,6 +19,7 @@ const styles = StyleSheet.create({
   optionText: {
     fontSize: 16,
     padding: 5,
+    backgroundColor: 'transparent',
   },
 });
 
