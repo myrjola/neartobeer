@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { badgeSize, backgroundColor, borderColor } from '../constants';
+import { badgeSize, borderColor } from '../constants';
 
 const boxAroundCoordinates = (position) => {
   const coordinates = position.coords;
@@ -41,7 +41,7 @@ const ZoomToUserLocationButton = ({ style }) => (
       iconStyle={styles.gpsIcon}
       onPress={zoomToUserLocation}
       style={styles.buttonStyle}
-      backgroundColor={backgroundColor}
+      backgroundColor="transparent"
       color={borderColor}
     />
   </View>

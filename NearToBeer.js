@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
     flex: 0,
     height: badgeSize,
     width: badgeSize,
-    elevation: 2,
     borderRadius: 5,
   },
   aboutButton: {
