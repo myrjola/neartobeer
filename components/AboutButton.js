@@ -3,7 +3,7 @@ import { Actions } from 'react-native-router-flux';
 import { StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { backgroundColor, borderColor } from '../constants';
+import { borderColor } from '../constants';
 
 const styles = StyleSheet.create({
   aboutIcon: {

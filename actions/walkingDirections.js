@@ -48,7 +48,7 @@ function fetchWalkingDirections(destination) {
       (position) => {
         const origin = position.coords;
         // FIXME: Figure out how not to repeat ourselves. This key is also in AndroidManifests.xml.
-        const APIKEY = '***REMOVED***';
+        const APIKEY = '*REMOVED*';
         const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${coordinatesToString(origin)}` +
               `&destination=${coordinatesToString(destination)}&key=${APIKEY}&mode=walking`;
         return fetch(url)

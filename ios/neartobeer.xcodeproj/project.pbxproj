@@ -1009,7 +1009,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ***REMOVED***;
+				PRODUCT_BUNDLE_IDENTIFIER = cato.beersunderthirty;
 				PRODUCT_NAME = neartobeer;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1043,7 +1043,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ***REMOVED***;
+				PRODUCT_BUNDLE_IDENTIFIER = cato.beersunderthirty;
 				PRODUCT_NAME = neartobeer;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
