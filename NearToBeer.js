@@ -10,8 +10,7 @@ import FilteredBarMap from './containers/FilteredBarMap';
 import MaxBeerPriceSelector from './containers/MaxBeerPriceSelector';
 import BarInfoContainer from './containers/BarInfoContainer';
 import ZoomToUserLocationButton from './components/ZoomToUserLocationButton';
-import { width, height, backgroundColor, borderColor, badgeSize,
-  badgeXPosition, buttonSize } from './constants';
+import { width, backgroundColor, borderColor, badgeSize, buttonSize } from './constants';
 
 const store = configureStore();
 
