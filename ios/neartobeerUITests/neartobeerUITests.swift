@@ -38,7 +38,7 @@ class neartobeerUITests: XCTestCase {
     super.tearDown()
   }
   
-  func testExample() {
+  func testApp() {
     // Use recording to get started writing UI tests.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
     let app = XCUIApplication()
@@ -49,8 +49,9 @@ class neartobeerUITests: XCTestCase {
     app.otherElements.matching(identifier: "40kr").element(boundBy: 0).tap()
     app.otherElements.matching(identifier: "Map pin").element(boundBy: 2).tap()
     snapshot("Bar clicked")
+    app.tap()
     
-    app.otherElements.matching(identifier: "About button").element(boundBy: 0).tap()
+    app.otherElements["About button"].otherElements.element.tap()
     snapshot("About us")
   }
 }
