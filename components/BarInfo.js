@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   separator: {
     height: 1,
     backgroundColor: 'black',
-    opacity: 0.54,
+    opacity: 0.10,
   },
   barDescription: {
     flex: 1,
