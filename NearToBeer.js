@@ -84,9 +84,9 @@ const MainView = () => (
 const NearToBeer = () => (
   <Provider store={store}>
     <Router>
-      <Scene key="root" hideNavBar={true}>
-        <Scene key="mainView" component={MainView} initial={true} />
-        <Scene key="aboutView" title="Feedback" hideNavBar={false} component={AboutView} />
+      <Scene key="root">
+        <Scene key="mainView" component={MainView} hideNavBar={true} initial={true} />
+        <Scene key="aboutView" title="Feedback" component={AboutView} />
       </Scene>
     </Router>
   </Provider>
